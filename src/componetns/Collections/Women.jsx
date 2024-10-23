@@ -27,13 +27,13 @@ const StarRating = ({ rating }) => {
 
 function Women() {
   const products = [
-    { name: 'Formal Wear', price: 599, discount: 10, imgSrc: './src/assets/Images/W2.jpg', rating: 4 },
-    { name: 'Casual Dress', price: 699, discount: 15, imgSrc: './src/assets/Images/W3.jpg', rating: 5 },
-    { name: 'Summer Dress', price: 499, discount: 20, imgSrc: './src/assets/Images/W4.jpg', rating: 3 },
-    { name: 'Evening Gown', price: 899, discount: 25, imgSrc: './src/assets/Images/W5.jpg', rating: 5 },
-    { name: 'Cocktail Dress', price: 799, discount: 10, imgSrc: './src/assets/Images/W6.jpg', rating: 4 },
-    { name: 'Party Wear', price: 499, discount: 5, imgSrc: './src/assets/Images/W7.jpg', rating: 3 },
-    { name: 'Formal Dress', price: 599, discount: 15, imgSrc: './src/assets/Images/W8.jpg', rating: 4 },
+    { name: 'Formal Wear', price: 599, discount: 10, imgSrc: '../../assets/Images/W2.jpg', rating: 4 },
+    { name: 'Casual Dress', price: 699, discount: 15, imgSrc: '../../assets/Images/W3.jpg', rating: 5 },
+    { name: 'Summer Dress', price: 499, discount: 20, imgSrc: '../../assets/Images/W4.jpg', rating: 3 },
+    { name: 'Evening Gown', price: 899, discount: 25, imgSrc: '../../assets/Images/W5.jpg', rating: 5 },
+    { name: 'Cocktail Dress', price: 799, discount: 10, imgSrc: '../../assets/Images/W6.jpg', rating: 4 },
+    { name: 'Party Wear', price: 499, discount: 5, imgSrc: '../../assets/Images/W7.jpg', rating: 3 },
+    { name: 'Formal Dress', price: 599, discount: 15, imgSrc: '../../assets/Images/W8.jpg', rating: 4 },
   ];
 
   return (
