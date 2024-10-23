@@ -8,10 +8,11 @@ import Home from './componetns/Home/Home.jsx'
 import About from './componetns/About/About.jsx'
 import FAQ from './componetns/FAQ/Faq.jsx'
 import Contact from './componetns/Contact/Contact.jsx'
-import Cart from './componetns/Cart/Cart.jsx'
+
 import Men from './componetns/Collections/Men.jsx'
 import Women from './componetns/Collections/Women.jsx'
 import Kids from './componetns/Collections/Kids.jsx'
+import Cart from './componetns/Cart/Cart.jsx'
 import { CartContext, CartProvider } from './componetns/Context/CartContext.jsx'
 // import Contact from './components/Contact/Contact.jsx'
 // // import User from './components/User/User.jsx'
@@ -33,6 +34,7 @@ const router = createBrowserRouter(
       <Route path="men" element={<Men />} />
       <Route path="women" element={<Women />} />
       <Route path="kids" element={<Kids />} />
+      <Route path="cart" element={<Cart />} />
       
       
     </Route>

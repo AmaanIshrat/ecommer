@@ -110,8 +110,8 @@ export default function Home() {
       >
         {/* Men's Collection Slide */}
         <SwiperSlide>
-          <Link to="/men" className="category-card">
             <div className="max-w-sm bg-white shadow-xl rounded-lg overflow-hidden mx-auto border-2 border-purple-500 transform hover:scale-105 transition-all duration-300">
+          <Link to="/men" className="category-card">
               <img
                 className="w-full h-64 object-cover"
                 src="/assets/Images/Men.jpg"
@@ -120,14 +120,15 @@ export default function Home() {
               <div className="p-4 text-center">
                 <h3 className="text-lg font-semibold text-gray-800">Men's Collection</h3>
               </div>
-            </div>
           </Link>
+            </div>
         </SwiperSlide>
 
         {/* Women's Collection Slide */}
         <SwiperSlide>
-          <Link to="/women" className="category-card">
+          
             <div className="max-w-sm bg-white shadow-xl rounded-lg overflow-hidden mx-auto border-2 border-purple-500 transform hover:scale-105 transition-all duration-300">
+              <Link to="/women" className="category-card">
               <img
                 className="w-full h-64 object-cover"
                 src="/assets/Images/Women.jpg"
@@ -136,14 +137,16 @@ export default function Home() {
               <div className="p-4 text-center">
                 <h3 className="text-lg font-semibold text-gray-800">Women's Collection</h3>
               </div>
+              </Link>
             </div>
-          </Link>
+          
         </SwiperSlide>
 
         {/* Kids' Collection Slide */}
         <SwiperSlide>
-          <Link to="/kids" className="category-card">
+         
             <div className="max-w-sm bg-white shadow-xl rounded-lg overflow-hidden mx-auto border-2 border-purple-500 transform hover:scale-105 transition-all duration-300">
+            <Link to="/kids" className="category-card">
               <img
                 className="w-full h-64 object-cover"
                 src="/assets/Images/Kids.jpg"
@@ -152,8 +155,9 @@ export default function Home() {
               <div className="p-4 text-center">
                 <h3 className="text-lg font-semibold text-gray-800">Kids' Collection</h3>
               </div>
+              </Link>
             </div>
-          </Link>
+          
         </SwiperSlide>
       </Swiper>
 
