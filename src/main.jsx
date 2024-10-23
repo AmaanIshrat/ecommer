@@ -12,6 +12,7 @@ import Cart from './componetns/Cart/Cart.jsx'
 import Men from './componetns/Collections/Men.jsx'
 import Women from './componetns/Collections/Women.jsx'
 import Kids from './componetns/Collections/Kids.jsx'
+import { CartContext, CartProvider } from './componetns/Context/CartContext.jsx'
 // import Contact from './components/Contact/Contact.jsx'
 // // import User from './components/User/User.jsx'
 // import Login from './components/Login/Login.jsx'
@@ -20,6 +21,8 @@ import Kids from './componetns/Collections/Kids.jsx'
 
 const router = createBrowserRouter( 
   createRoutesFromElements(
+
+    
     
     <Route path='/' element={<Layout />}>
       <Route path='' element={<Home />} />
@@ -41,9 +44,10 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    
+    <CartProvider>
     
     <RouterProvider router={router} />
+    </CartProvider>
     
   </React.StrictMode>,
 )

@@ -1,15 +1,18 @@
 import React, { useState, useEffect, useRef } from 'react';
+import  { useContext } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { FaShoppingCart } from 'react-icons/fa'; 
 import logo from '/assets/Images/Elog2.jpg'
+import { CartContext } from '../Context/CartContext';
 
 export default function Header() {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isNavbarVisible, setIsNavbarVisible] = useState(true);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false); // State for dropdown
-  const [cartItems, setCartItems] = useState(0); // State for cart items
+  // const [cartItems, setCartItems] = useState(0); // State for cart items
   const dropdownRef = useRef(null); // Ref for the dropdown
   const navigate = useNavigate(); // Hook for programmatic navigation
+  const { cartItems } = useContext(CartContext);
 
   // Handle scroll event
   const handleScroll = () => {
@@ -173,22 +176,31 @@ export default function Header() {
 
           {/* Right: Cart Icon */}
           <div className="flex items-center space-x-4">
-            <Link to="/cart" className="relative text-white hover:text-gray-200">
-              <FaShoppingCart className="text-3xl" />
-              {cartItems > 0 && (
-                <span className="absolute -top-1 -right-2 bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                  {cartItems}
-                </span>
-              )}
-            </Link>
+           
+    <div className="container mx-auto flex justify-between items-center">
+  {/* Flex container for cart and login button */}
+  <div className="flex items-center space-x-6">
+    {/* Cart Icon with Badge */}
+    <div className="relative">
+      <FaShoppingCart className="text-3xl text-white" />
+      
+      {cartItems.length > 0 && (
+        <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+          {cartItems.length}
+        </span>
+      )}
+    </div>
+    
+    {/* Login Button */}
+    <Link
+      to="#"
+      className="bg-white text-purple-500 hover:bg-gray-100 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 focus:outline-none"
+    >
+      Log in
+    </Link>
+  </div>
+</div>
 
-            {/* Login Button */}
-            <Link
-              to="#"
-              className="bg-white text-purple-500 hover:bg-gray-100 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 focus:outline-none"
-            >
-              Log in
-            </Link>
           </div>
         </div>
       </nav>
