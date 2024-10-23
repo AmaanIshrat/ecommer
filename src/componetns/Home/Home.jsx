@@ -37,7 +37,7 @@ export default function Home() {
 
                     <Link
                       className="inline-flex items-center px-6 py-3 font-medium text-purple-500 border border-purple-500 rounded-lg hover:bg-purple-500 hover:text-white transition"
-                      to="/"
+                      to="/knowme"
                     >
                       Know more
                     </Link>
@@ -161,7 +161,7 @@ export default function Home() {
         </SwiperSlide>
       </Swiper>
 
-      {/* Gap between last div and footer */}
+      
       <div className="mb-12"></div>
     </>
   );
