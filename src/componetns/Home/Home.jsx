@@ -146,7 +146,7 @@ export default function Home() {
             <div className="max-w-sm bg-white shadow-xl rounded-lg overflow-hidden mx-auto border-2 border-purple-500 transform hover:scale-105 transition-all duration-300">
               <img
                 className="w-full h-64 object-cover"
-                src="/assets/Images/kids.jpg"
+                src="/assets/Images/Kids.jpg"
                 alt="Kids"
               />
               <div className="p-4 text-center">
