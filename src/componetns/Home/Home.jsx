@@ -25,7 +25,7 @@ export default function Home() {
         className="mySwiper"
       >
         <SwiperSlide>
-          <div className="bg-[url('./src/assets/Images/sl0.jpg')] bg-cover bg-center h-full">
+          <div className="bg-[url('/assets/Images/sl0.jpg')] bg-cover bg-center h-full">
             <div className="mx-auto w-full max-w-7xl">
               <aside className="relative overflow-hidden text-black rounded-lg sm:mx-16 mx-2 sm:py-16">
                 <div className="relative z-10 max-w-screen-xl px-4 pb-20 pt-10 sm:py-24 mx-auto sm:px-6 lg:px-8">
@@ -49,7 +49,7 @@ export default function Home() {
         </SwiperSlide>
 
         <SwiperSlide>
-          <div className="bg-[url('./src/assets/Images/sl6.jpg')] bg-cover bg-center h-full">
+          <div className="bg-[url('/assets/Images/sl6.jpg')] bg-cover bg-center h-full">
             <div className="mx-auto w-full max-w-7xl">
               <aside className="relative overflow-hidden text-black rounded-lg sm:mx-16 mx-2 sm:py-16">
                 <div className="relative z-10 max-w-screen-xl px-4 pb-20 pt-10 sm:py-24 mx-auto sm:px-6 lg:px-8">
@@ -71,7 +71,7 @@ export default function Home() {
         </SwiperSlide>
 
         <SwiperSlide>
-          <div className="bg-[url('./src/assets/Images/sl7.jpg')] bg-cover bg-center h-full">
+          <div className="bg-[url('/assets/Images/sl7.jpg')] bg-cover bg-center h-full">
             <div className="mx-auto w-full max-w-7xl">
               <aside className="relative overflow-hidden text-black rounded-lg sm:mx-16 mx-2 sm:py-16">
                 <div className="relative z-10 max-w-screen-xl px-4 pb-20 pt-10 sm:py-24 mx-auto sm:px-6 lg:px-8">
@@ -114,7 +114,7 @@ export default function Home() {
             <div className="max-w-sm bg-white shadow-xl rounded-lg overflow-hidden mx-auto border-2 border-purple-500 transform hover:scale-105 transition-all duration-300">
               <img
                 className="w-full h-64 object-cover"
-                src="./src/assets/Images/Men.jpg"
+                src="/assets/Images/Men.jpg"
                 alt="Men"
               />
               <div className="p-4 text-center">
@@ -130,7 +130,7 @@ export default function Home() {
             <div className="max-w-sm bg-white shadow-xl rounded-lg overflow-hidden mx-auto border-2 border-purple-500 transform hover:scale-105 transition-all duration-300">
               <img
                 className="w-full h-64 object-cover"
-                src="./src/assets/Images/Women.jpg"
+                src="/assets/Images/Women.jpg"
                 alt="Women"
               />
               <div className="p-4 text-center">
@@ -146,7 +146,7 @@ export default function Home() {
             <div className="max-w-sm bg-white shadow-xl rounded-lg overflow-hidden mx-auto border-2 border-purple-500 transform hover:scale-105 transition-all duration-300">
               <img
                 className="w-full h-64 object-cover"
-                src="./src/assets/Images/kids.jpg"
+                src="/assets/Images/kids.jpg"
                 alt="Kids"
               />
               <div className="p-4 text-center">

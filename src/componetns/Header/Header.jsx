@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { FaShoppingCart } from 'react-icons/fa'; 
-import logo from '../../assets/Images/Elog2.jpg'
+import logo from '/assets/Images/Elog2.jpg'
 
 export default function Header() {
   const [scrollPosition, setScrollPosition] = useState(0);

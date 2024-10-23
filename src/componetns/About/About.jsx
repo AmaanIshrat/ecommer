@@ -11,17 +11,17 @@ export default function About() {
       
       <div className="flex flex-wrap justify-center">
         <img
-          src="./src/assets/Images/ab1.png" // Replace with your image URL
+          src="/assets/Images/ab1.png" // Replace with your image URL
           alt="Description of image 1"
           className="w-full md:w-1/3 p-2"
         />
         <img
-          src="./src/assets/Images/Ab4.jpg" // Replace with your image URL
+          src="/assets/Images/Ab4.jpg" // Replace with your image URL
           alt="Description of image 2"
           className="w-full md:w-1/3 p-2"
         />
         <img
-          src="./src/assets/Images/ab2.jpg" // Replace with your image URL
+          src="/assets/Images/ab2.jpg" // Replace with your image URL
           alt="Description of image 3"
           className="w-full md:w-1/3 p-2"
         />

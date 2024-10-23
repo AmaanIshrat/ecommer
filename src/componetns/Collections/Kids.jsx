@@ -27,14 +27,14 @@ const StarRating = ({ rating }) => {
 
 function Kids() {
   const products = [
-    { name: 'Formal Wear', price: 599, discount: 10, imgSrc: '../../assets/Images/W2.jpg', rating: 4 },
-    { name: 'Kids Formal Wear', price: 599, discount: 15, imgSrc: '../../assets/Images/K1.jpg', rating: 5 },
-    { name: 'Kids Wear', price: 799, discount: 20, imgSrc: '../../assets/Images/K6.jpg', rating: 4 },
-    { name: 'Formal Wear', price: 599, discount: 10, imgSrc: '../../assets/Images/K5.jpg', rating: 4 },
-    { name: 'Kids Wear', price: 999, discount: 25, imgSrc: '../../assets/Images/k4.jpg', rating: 5 },
-    { name: 'For Kids', price: 399, discount: 5, imgSrc: '../../assets/Images/K3.jpg', rating: 3 },
-    { name: 'Kids Wear', price: 499, discount: 15, imgSrc: '../../assets/Images/K2.jpg', rating: 4 },
-    { name: 'Kids Wear', price: 599, discount: 10, imgSrc: '../../assets/Images/K1.jpg', rating: 4 },
+    { name: 'Formal Wear', price: 599, discount: 10, imgSrc: '/assets/Images/W2.jpg', rating: 4 },
+    { name: 'Kids Formal Wear', price: 599, discount: 15, imgSrc: '/assets/Images/K1.jpg', rating: 5 },
+    { name: 'Kids Wear', price: 799, discount: 20, imgSrc: '/assets/Images/k5.jpg', rating: 4 },
+    { name: 'Formal Wear', price: 599, discount: 10, imgSrc: '/assets/Images/K2.jpg', rating: 4 },
+    { name: 'Kids Wear', price: 999, discount: 25, imgSrc: '/assets/Images/k4.jpg', rating: 5 },
+    { name: 'For Kids', price: 399, discount: 5, imgSrc: '/assets/Images/K3.jpg', rating: 3 },
+    { name: 'Kids Wear', price: 499, discount: 15, imgSrc: '/assets/Images/k6.jpg', rating: 4 },
+    { name: 'Kids Wear', price: 599, discount: 10, imgSrc: '/assets/Images/K1.jpg', rating: 4 },
   ];
 
   return (

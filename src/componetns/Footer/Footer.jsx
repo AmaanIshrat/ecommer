@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import Elog2 from '../../assets/Images/Elog2.jpg'
+import Elog2 from '/assets/Images/Elog2.jpg'
 
 export default function Footer() {
     return (
