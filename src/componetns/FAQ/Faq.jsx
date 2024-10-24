@@ -26,7 +26,7 @@ export default function FAQ() {
         </h2>
         {visibleAnswers[1] && (
           <p className="bg-light-purple-200 p-2 rounded-md mt-2">
-            This site is about providing information on our product collections, blogs, and more.
+            This site is about providing information on our product collections, and more.
           </p>
         )}
       </div>
