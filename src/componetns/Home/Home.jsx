@@ -55,11 +55,11 @@ export default function Home() {
                 <div className="relative z-10 max-w-screen-xl px-4 pb-20 pt-10 sm:py-24 mx-auto sm:px-6 lg:px-8">
                   <div className="max-w-xl sm:mt-1 mt-80 space-y-8 text-center sm:text-right sm:ml-auto">
                     <h4 className="text-4xl font-serif font-bold sm:text-5xl leading-tight sm:leading-snug text-purple-800 tracking-wider">
-                      Discover Our Latest Collection!
+                      Discover Our Latest Collection for Men!
                     </h4>
                     <Link
                       className="inline-flex items-center px-6 py-3 font-medium text-purple-500 border border-purple-500 rounded-lg hover:bg-purple-500 hover:text-white transition"
-                      to="/"
+                      to="/men"
                     >
                       Click Here
                     </Link>
@@ -77,11 +77,11 @@ export default function Home() {
                 <div className="relative z-10 max-w-screen-xl px-4 pb-20 pt-10 sm:py-24 mx-auto sm:px-6 lg:px-8">
                   <div className="max-w-xl sm:mt-1 mt-80 space-y-8 text-center sm:text-right sm:ml-auto">
                     <h4 className="text-4xl font-serif font-bold sm:text-5xl leading-tight sm:leading-snug text-purple-800 tracking-wider">
-                      Seasonal Discounts Available!
+                      Seasonal Discounts Available for Women Collections!
                     </h4>
                     <Link
                       className="inline-flex items-center px-6 py-3 font-medium text-purple-500 border border-purple-500 rounded-lg hover:bg-purple-500 hover:text-white transition"
-                      to="/"
+                      to="/Women"
                     >
                       Click Here
                     </Link>
