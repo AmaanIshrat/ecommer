@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
-    name: '',
+    firstName: '',
+    lastName: '',
     email: '',
+    phone: '',
     message: '',
   });
 
@@ -21,25 +24,37 @@ export default function Contact() {
   // Validate form data
   const validateForm = () => {
     const newErrors = {};
-    if (!formData.name.trim()) newErrors.name = 'Name is required';
+    if (!formData.firstName.trim()) newErrors.firstName = 'First name is required';
+    if (!formData.lastName.trim()) newErrors.lastName = 'Last name is required';
     if (!formData.email.trim()) {
       newErrors.email = 'Email is required';
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = 'Email is invalid';
     }
+    if (!formData.phone.trim()) {
+      newErrors.phone = 'Phone number is required';
+    } else if (!/^\d{10}$/.test(formData.phone)) {
+      newErrors.phone = 'Phone number is invalid';
+    }
     if (!formData.message.trim()) newErrors.message = 'Message is required';
     return newErrors;
   };
 
-  // Handle form submit
-  const handleSubmit = (e) => {
+  // Handle form submit with API call
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const formErrors = validateForm();
     if (Object.keys(formErrors).length === 0) {
-      setSubmitted(true);
-      setErrors({});
-      console.log('Form data submitted:', formData);
-      // You can add logic to send the form data to a server here.
+      try {
+        // API call with Axios
+        const response = await axios.post('https://sparkup-api.vercel.app/contact-us/createmessage', formData);
+        console.log('Response:', response.data);
+        setSubmitted(true);
+        setErrors({});
+      } catch (error) {
+        console.error('Error sending data:', error);
+        setErrors({ api: 'There was an issue sending your message. .' });
+      }
     } else {
       setErrors(formErrors);
       setSubmitted(false);
@@ -47,29 +62,46 @@ export default function Contact() {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
-      <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
+    <div className="flex flex-col justify-center items-center min-h-screen p-4">
+      <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full mb-4">
         <h2 className="text-2xl font-semibold mb-6 text-center">Contact Us</h2>
         
         {submitted ? (
           <p className="text-green-500 text-center mb-6">Thank you for your message! We will get back to you soon.</p>
         ) : (
           <form onSubmit={handleSubmit}>
-            {/* Name Input */}
+            {/* First Name Input */}
             <div className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
-                Name
+              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="firstName">
+                First Name
               </label>
               <input
-                id="name"
-                name="name"
+                id="firstName"
+                name="firstName"
                 type="text"
-                value={formData.name}
+                value={formData.firstName}
                 onChange={handleInputChange}
                 className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
-                placeholder="Your name"
+                placeholder="Your first name"
               />
-              {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
+              {errors.firstName && <p className="text-red-500 text-sm mt-1">{errors.firstName}</p>}
+            </div>
+
+            {/* Last Name Input */}
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="lastName">
+                Last Name
+              </label>
+              <input
+                id="lastName"
+                name="lastName"
+                type="text"
+                value={formData.lastName}
+                onChange={handleInputChange}
+                className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                placeholder="Your last name"
+              />
+              {errors.lastName && <p className="text-red-500 text-sm mt-1">{errors.lastName}</p>}
             </div>
 
             {/* Email Input */}
@@ -87,6 +119,23 @@ export default function Contact() {
                 placeholder="Your email"
               />
               {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+            </div>
+
+            {/* Phone Input */}
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="phone">
+                Phone Number
+              </label>
+              <input
+                id="phone"
+                name="phone"
+                type="text"
+                value={formData.phone}
+                onChange={handleInputChange}
+                className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                placeholder="Your phone number"
+              />
+              {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
             </div>
 
             {/* Message Input */}
@@ -109,10 +158,13 @@ export default function Contact() {
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full bg-purple-500 text-white py-2 px-4 rounded-md hover:bg-purple-600 transition-colors duration-300"
+              className="w-full bg-gradient-to-r from-purple-500 to-pink-400 text-white py-2 px-4 rounded-md hover:bg-purple-600 transition-colors duration-300"
             >
               Send Message
             </button>
+
+            {/* API Error */}
+            {errors.api && <p className="text-red-500 text-center mt-4">{errors.api}</p>}
           </form>
         )}
       </div>

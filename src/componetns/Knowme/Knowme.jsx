@@ -5,7 +5,7 @@ function Knowme() {
   return (
     <div className="bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl font-extrabold text-purple-600 text-center mb-6">
+        <h1 className="text-4xl font-extrabold text-purple-600 text-center mb-6"> 
           Welcome to Our Shopping Paradise!
         </h1>
         <p className="text-lg text-gray-700 text-center mb-8">
@@ -49,7 +49,7 @@ function Knowme() {
         <div className="mt-12 text-center">
           <Link
             to="/"
-            className="inline-block px-6 py-3 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition duration-300"
+            className="inline-block px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-400 text-white rounded-lg hover:bg-purple-600 transition duration-300"
           >
             Shop Now
           </Link>

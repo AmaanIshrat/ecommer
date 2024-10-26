@@ -75,7 +75,7 @@ function Women() {
                 <StarRating rating={product.rating} />
                 <button
                   onClick={() => handleAddToCart(product)} // Use the function to add product to cart
-                  className="mt-4 w-full px-4 py-2 text-white bg-purple-500 hover:bg-purple-700 rounded-lg focus:outline-none"
+                  className="mt-4 w-full px-4 py-2 text-white bg-gradient-to-r from-purple-500 to-pink-400 hover:bg-purple-700 rounded-lg focus:outline-none"
                 >
                   Add to Cart
                 </button>

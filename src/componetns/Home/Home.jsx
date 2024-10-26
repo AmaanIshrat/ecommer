@@ -36,7 +36,7 @@ export default function Home() {
                     </h4>
 
                     <Link
-                      className="inline-flex items-center px-6 py-3 font-medium text-purple-500 border border-purple-500 rounded-lg hover:bg-purple-500 hover:text-white transition"
+                      className="inline-flex items-center px-6 py-3 font-medium text-purple-500 border border-purple-500 rounded-lg hover:bg-gradient-to-r from-purple-500 to-pink-400 hover:text-white transition"
                       to="/knowme"
                     >
                       Know more
@@ -58,7 +58,7 @@ export default function Home() {
                       Discover Our Latest Collection for Men!
                     </h4>
                     <Link
-                      className="inline-flex items-center px-6 py-3 font-medium text-purple-500 border border-purple-500 rounded-lg hover:bg-purple-500 hover:text-white transition"
+                      className="inline-flex items-center px-6 py-3 font-medium text-purple-500 border border-purple-500 rounded-lg hover:bg-gradient-to-r from-purple-500 to-pink-400 hover:text-white transition"
                       to="/men"
                     >
                       Click Here
@@ -80,7 +80,7 @@ export default function Home() {
                       Seasonal Discounts Available for Women Collections!
                     </h4>
                     <Link
-                      className="inline-flex items-center px-6 py-3 font-medium text-purple-500 border border-purple-500 rounded-lg hover:bg-purple-500 hover:text-white transition"
+                      className="inline-flex items-center px-6 py-3 font-medium text-purple-500 border border-purple-500 rounded-lg hover:bg-gradient-to-r from-purple-500 to-pink-400 hover:text-white transition"
                       to="/Women"
                     >
                       Click Here
@@ -210,7 +210,7 @@ export default function Home() {
       </section>
 
       {/* Newsletter Section */}
-      <section className="bg-purple-500 py-12">
+      <section className="bg-gradient-to-r from-purple-500 to-pink-400 py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-extrabold text-white">
             Subscribe!

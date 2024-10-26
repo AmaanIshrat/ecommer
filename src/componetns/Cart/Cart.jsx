@@ -42,7 +42,7 @@ const Cart = () => {
           {/* Total Price Section */}
           <div className="mt-6 p-4 bg-white rounded-lg shadow-md text-right">
             <h3 className="text-xl font-semibold text-gray-800">Total: Rs-{totalPrice.toFixed(2)}</h3>
-            <button className="mt-4 px-6 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition duration-300">
+            <button className="mt-4 px-6 py-2 bg-gradient-to-r from-purple-500 to-pink-400 text-white rounded-lg hover:bg-purple-600 transition duration-300">
               Proceed to Checkout
             </button>
           </div>

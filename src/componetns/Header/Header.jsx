@@ -69,7 +69,7 @@ export default function Header() {
     <header
       className={`shadow sticky top-0 z-50 transition-transform duration-300 ${isNavbarVisible ? 'translate-y-0' : '-translate-y-full'}`}
     >
-      <nav className="bg-purple-500 border-gray-200 px-4 lg:px-6 py-2.5">
+      <nav className="bg-gradient-to-r from-purple-500 to-pink-400 border-gray-200 px-4 lg:px-6 py-2.5">
         <div className="flex justify-between items-center mx-auto max-w-screen-xl">
           {/* Left: Logo */}
           <div className="flex-grow flex justify-center">
@@ -113,7 +113,7 @@ export default function Header() {
                         <li>
                           <NavLink
                             to="/men"
-                            className="block px-4 py-2 text-gray-800 hover:bg-purple-600 hover:text-white"
+                            className="block px-4 py-2 text-gray-800 hover:bg-gradient-to-r from-purple-500 to-pink-400 hover:text-white"
                             onClick={closeMobileMenu} // Close menu after selection
                           >
                             Men
@@ -122,7 +122,7 @@ export default function Header() {
                         <li>
                           <NavLink
                             to="/women"
-                            className="block px-4 py-2 text-gray-800 hover:bg-purple-600 hover:text-white"
+                            className="block px-4 py-2 text-gray-800 hover:bg-gradient-to-r from-purple-500 to-pink-400 hover:text-white"
                             onClick={closeMobileMenu} // Close menu after selection
                           >
                             Women
@@ -131,7 +131,7 @@ export default function Header() {
                         <li>
                           <NavLink
                             to="/kids"
-                            className="block px-4 py-2 text-gray-800 hover:bg-purple-600 hover:text-white"
+                            className="block px-4 py-2 text-gray-800 hover:bg-gradient-to-r from-purple-500 to-pink-400 hover:text-white"
                             onClick={closeMobileMenu} // Close menu after selection
                           >
                             Kids
@@ -186,7 +186,7 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden bg-purple-500 p-4">
+        <div className="lg:hidden bg-gradient-to-r from-purple-500 to-pink-400 p-4">
           <ul className="flex flex-col space-y-2">
             <li>
               <NavLink
@@ -210,7 +210,7 @@ export default function Header() {
               <div className="relative" ref={dropdownRef}>
                 <button
                   onClick={handleDropdownClick}
-                  className={`block py-2 px-4 rounded-lg transition-all duration-300 text-white bg-purple-500 border-b border-transparent hover:bg-purple-700 hover:border-purple-700 hover:scale-105 lg:hover:bg-transparent lg:hover:text-purple-500 lg:text-white lg:hover:border-purple-500 lg:hover:underline`}
+                  className={`block py-2 px-4 rounded-lg transition-all duration-300 text-white bg-gradient-to-r from-purple-500 to-pink-400 border-b border-transparent hover:bg-purple-700 hover:border-purple-700 hover:scale-105 lg:hover:bg-transparent lg:hover:text-purple-500 lg:text-white lg:hover:border-purple-500 lg:hover:underline`}
 
                 >
                   Collections
@@ -221,7 +221,7 @@ export default function Header() {
                       <li>
                         <NavLink
                           to="/men"
-                          className="block px-4 py-2 text-gray-800 hover:bg-purple-600 hover:text-white"
+                          className="block px-4 py-2 text-gray-800 hover:bg-gradient-to-r from-purple-500 to-pink-400 hover:text-white"
                           onClick={() => {
                             closeMobileMenu(); // Close mobile menu
                             setIsDropdownOpen(false); // Close dropdown
@@ -233,7 +233,7 @@ export default function Header() {
                       <li>
                         <NavLink
                           to="/women"
-                          className="block px-4 py-2 text-gray-800 hover:bg-purple-600 hover:text-white"
+                          className="block px-4 py-2 text-gray-800 hover:bg-gradient-to-r from-purple-500 to-pink-400 hover:text-white"
                           onClick={() => {
                             closeMobileMenu(); // Close mobile menu
                             setIsDropdownOpen(false); // Close dropdown
@@ -245,7 +245,7 @@ export default function Header() {
                       <li>
                         <NavLink
                           to="/kids"
-                          className="block px-4 py-2 text-gray-800 hover:bg-purple-600 hover:text-white"
+                          className="block px-4 py-2 text-gray-800 hover:bg-gradient-to-r from-purple-500 to-pink-400 hover:text-white"
                           onClick={() => {
                             closeMobileMenu(); // Close mobile menu
                             setIsDropdownOpen(false); // Close dropdown
