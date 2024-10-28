@@ -6,7 +6,7 @@ export default function Contact() {
     firstName: '',
     lastName: '',
     email: '',
-    phone: '',
+    phoneNumber: '',
     message: '',
   });
 
@@ -31,10 +31,10 @@ export default function Contact() {
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = 'Email is invalid';
     }
-    if (!formData.phone.trim()) {
-      newErrors.phone = 'Phone number is required';
-    } else if (!/^\d{10}$/.test(formData.phone)) {
-      newErrors.phone = 'Phone number is invalid';
+    if (!formData.phoneNumber.trim()) {
+      newErrors.phoneNumber = 'Phone number is required';
+    } else if (!/^\d{10}$/.test(formData.phoneNumber)) {
+      newErrors.phoneNumber = 'Phone number is invalid';
     }
     if (!formData.message.trim()) newErrors.message = 'Message is required';
     return newErrors;
@@ -123,19 +123,19 @@ export default function Contact() {
 
             {/* Phone Input */}
             <div className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="phone">
+              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="phoneNumber">
                 Phone Number
               </label>
               <input
-                id="phone"
-                name="phone"
+                id="phoneNumber"
+                name="phoneNumber"
                 type="text"
-                value={formData.phone}
+                value={formData.phoneNumber}
                 onChange={handleInputChange}
                 className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
-                placeholder="Your phone number"
+                placeholder="Your phoneNumber number"
               />
-              {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
+              {errors.phoneNumber && <p className="text-red-500 text-sm mt-1">{errors.phoneNumber}</p>}
             </div>
 
             {/* Message Input */}
