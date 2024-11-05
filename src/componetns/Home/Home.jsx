@@ -342,7 +342,7 @@ export default function Home() {
                 src="/assets/Images/W2.jpg"
                 alt="Product 3"
               />
-              3<div className="absolute inset-0 bg-purple-300 bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 rounded-lg"></div>
+              <div className="absolute inset-0 bg-purple-300 bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 rounded-lg"></div>
               <div className="absolute bottom-4 left-4 right-4 text-gray-700 hidden group-hover:block">
                 <h3 className="text-lg font-semibold"></h3>
                 <p className="text-md">Rs-1000</p>
