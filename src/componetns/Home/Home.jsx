@@ -130,6 +130,52 @@ export default function Home() {
           <Countdown targetDate="2024-11-30T23:59:59" /> {/* Set your target date here */}
         </div>
       </section>
+      <section className="bg-gray-50 py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+            
+            {/* Free Delivery */}
+            <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-lg">
+              <img
+                src="/assets/Images/FreeDelLogo.png" // Update path to your logo
+                alt="Free Delivery"
+                className="w-16 h-16 mb-4"
+              />
+              <h3 className="text-xl font-semibold text-gray-900">Free Delivery</h3>
+              <p className="text-gray-600 mt-2">
+                Enjoy free shipping on all orders.
+              </p>
+            </div>
+
+            {/* Return & Refund */}
+            <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-lg">
+              <img
+                src="/assets/Images/return log.jpg" // Update path to your logo
+                alt="Return and Refund"
+                className="w-16 h-16 mb-4"
+              />
+              <h3 className="text-xl font-semibold text-gray-900">Return & Refund</h3>
+              <p className="text-gray-600 mt-2">
+                Hassle-free returns and full refunds.
+              </p>
+            </div>
+
+            {/* 24/7 Support */}
+            <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-lg">
+              <img
+                src="/assets/Images/Support logo.png" // Update path to your logo
+                alt="24/7 Support"
+                className="w-16 h-16 mb-4"
+              />
+              <h3 className="text-xl font-semibold text-gray-900">24/7 Support</h3>
+              <p className="text-gray-600 mt-2">
+                We’re here to help anytime you need.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
 
       {/* Category Swiper Section */}
       <Swiper
