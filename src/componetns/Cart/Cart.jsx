@@ -3,11 +3,10 @@ import { CartContext } from '../Context/CartContext';
 import { Link } from 'react-router-dom';
 
 const Cart = () => {
-  const { cartItems } = useContext(CartContext); // Access cartItems from CartContext
+  const { cartItems, addToCart, removeFromCart } = useContext(CartContext);
 
-  // Calculate the total price
   const totalPrice = cartItems.reduce(
-    (acc, item) => acc + (item.price - item.price * (item.discount / 100)),
+    (acc, item) => acc + (item.price - item.price * (item.discount / 100)) * item.quantity,
     0
   );
 
@@ -29,10 +28,25 @@ const Cart = () => {
                   <img src={item.imgSrc} alt={item.name} className="h-20 w-20 object-cover rounded" />
                   <div>
                     <h3 className="text-lg font-semibold text-gray-800">{item.name}</h3>
-                    <p className="text-gray-500">Price: Rs-{item.price - (item.price * (item.discount / 100))}</p>
+                    <p className="text-gray-500">Price: Rs-{(item.price - (item.price * (item.discount / 100))).toFixed(2)}</p>
                     {item.discount > 0 && (
                       <p className="text-sm text-green-500">Discount: {item.discount}% off</p>
                     )}
+                    <div className="flex items-center space-x-4 mt-4">
+                      <button 
+                        onClick={() => removeFromCart(item.name)}
+                        className="px-4 py-2 text-white bg-red-500 rounded-full shadow-lg hover:bg-red-600 transition duration-300"
+                      >
+                        Remove
+                      </button>
+                      <span className="text-lg font-semibold">{item.quantity}</span>
+                      <button 
+                        onClick={() => addToCart(item)}
+                        className="px-4 py-2 text-white bg-green-500 rounded-full shadow-lg hover:bg-green-600 transition duration-300"
+                      >
+                        Add
+                      </button>
+                    </div>
                   </div>
                 </div>
               </li>
