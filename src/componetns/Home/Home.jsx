@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { Navigation, Pagination, Autoplay,EffectFade } from 'swiper/modules';
+import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
 
 // Countdown Component
 function Countdown({ targetDate }) {
@@ -130,51 +130,7 @@ export default function Home() {
           <Countdown targetDate="2024-11-30T23:59:59" /> {/* Set your target date here */}
         </div>
       </section>
-      <section className="bg-gray-50 py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
-            
-            {/* Free Delivery */}
-            <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-lg">
-              <img
-                src="/assets/Images/FreeDelLogo.png" // Update path to your logo
-                alt="Free Delivery"
-                className="w-16 h-16 mb-4"
-              />
-              <h3 className="text-xl font-semibold text-gray-900">Free Delivery</h3>
-              <p className="text-gray-600 mt-2">
-                Enjoy free shipping on all orders.
-              </p>
-            </div>
 
-            {/* Return & Refund */}
-            <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-lg">
-              <img
-                src="/assets/Images/return log.jpg" // Update path to your logo
-                alt="Return and Refund"
-                className="w-16 h-16 mb-4"
-              />
-              <h3 className="text-xl font-semibold text-gray-900">Return & Refund</h3>
-              <p className="text-gray-600 mt-2">
-                Hassle-free returns and full refunds.
-              </p>
-            </div>
-
-            {/* 24/7 Support */}
-            <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-lg">
-              <img
-                src="/assets/Images/Support logo.png" // Update path to your logo
-                alt="24/7 Support"
-                className="w-16 h-16 mb-4"
-              />
-              <h3 className="text-xl font-semibold text-gray-900">24/7 Support</h3>
-              <p className="text-gray-600 mt-2">
-                We’re here to help anytime you need.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
 
       {/* Category Swiper Section */}
@@ -242,6 +198,52 @@ export default function Home() {
           </div>
         </SwiperSlide>
       </Swiper>
+
+      <section className="bg-gray-50 py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+
+            {/* Free Delivery */}
+            <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-lg">
+              <img
+                src="/assets/Images/FreeDelLogo.png" // Update path to your logo
+                alt="Free Delivery"
+                className="w-16 h-16 mb-4"
+              />
+              <h3 className="text-xl font-semibold text-gray-900">Free Delivery</h3>
+              <p className="text-gray-600 mt-2">
+                Enjoy free shipping on all orders.
+              </p>
+            </div>
+
+            {/* Return & Refund */}
+            <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-lg">
+              <img
+                src="/assets/Images/return log.jpg" // Update path to your logo
+                alt="Return and Refund"
+                className="w-16 h-16 mb-4"
+              />
+              <h3 className="text-xl font-semibold text-gray-900">Return & Refund</h3>
+              <p className="text-gray-600 mt-2">
+                Hassle-free returns and full refunds.
+              </p>
+            </div>
+
+            {/* 24/7 Support */}
+            <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-lg">
+              <img
+                src="/assets/Images/Support logo.png" // Update path to your logo
+                alt="24/7 Support"
+                className="w-16 h-16 mb-4"
+              />
+              <h3 className="text-xl font-semibold text-gray-900">24/7 Support</h3>
+              <p className="text-gray-600 mt-2">
+                We’re here to help anytime you need.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
 
 
@@ -357,7 +359,7 @@ export default function Home() {
           <h2 className="text-3xl font-extrabold text-gray-900 mb-6">Our Story</h2>
           <p className="text-lg text-gray-700 max-w-3xl mx-auto">
             Welcome to Shopping – where style meets soul. Our story started with a vision to create clothing that empowers individuals to express their true selves. From humble beginnings, we set out to craft pieces that are not just beautiful but meaningful, bringing together quality, comfort, and timeless design.
-            <br/>
+            <br />
 
             Each collection at Shopping is inspired by our passion for style and sustainability. We believe fashion should make you feel confident and comfortable while being kind to the world around us. Our team is dedicated to sourcing high-quality materials and crafting pieces that stand the test of time, becoming cherished parts of your wardrobe.
           </p>
