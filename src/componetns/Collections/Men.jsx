@@ -22,8 +22,9 @@ const StarRating = ({ rating }) => {
 };
 
 function Men() {
-  const { addToCart } = useContext(CartContext); // Get addToCart from CartContext
-  const [successMessage, setSuccessMessage] = useState(''); // State for success message
+  const { addToCart } = useContext(CartContext);
+  const [successMessage, setSuccessMessage] = useState('');
+  const [selectedProduct, setSelectedProduct] = useState(null); // State for modal
 
   const products = [
     { name: 'Formal Wear', price: 599, discount: 10, imgSrc: '/assets/Images/M1.jpg', rating: 4 },
@@ -36,37 +37,40 @@ function Men() {
     { name: 'Formal Shirt', price: 699, discount: 10, imgSrc: '/assets/Images/M8.jpg', rating: 5 },
     { name: 'T-Shirt', price: 599, discount: 20, imgSrc: '/assets/Images/M9.jpg', rating: 4 },
     { name: 'fashion-T-Shirt', price: 599, discount: 30, imgSrc: '/assets/Images/M2.jpg', rating: 4 },
-    // Add more products...
   ];
 
-  // Function to handle adding item to cart
   const handleAddToCart = (product) => {
-    addToCart(product); // Add product to cart
-    setSuccessMessage('Item added successfully!'); // Set success message
+    addToCart(product);
+    setSuccessMessage('Item added successfully!');
+    setTimeout(() => setSuccessMessage(''), 3000);
+  };
 
-    // Clear the success message after 3 seconds
-    setTimeout(() => {
-      setSuccessMessage('');
-    }, 3000);
+  const handleImageClick = (product) => {
+    setSelectedProduct(product); // Set selected product to show in modal
+  };
+
+  const handleCloseModal = () => {
+    setSelectedProduct(null); // Close modal
   };
 
   return (
     <div className="mt-12 px-4 sm:px-16">
-      {/* Success message */}
       {successMessage && (
         <div className="fixed top-16 right-4 bg-green-500 text-white px-4 py-2 rounded-md shadow-md z-50">
           {successMessage}
         </div>
       )}
+
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {products.map((product, index) => {
           const discountedPrice = product.price - (product.price * (product.discount / 100));
           return (
             <div key={index} className="max-w-sm bg-white shadow-lg rounded-lg mx-auto">
               <img
-                className="w-full h-64 object-cover"
+                className="w-full h-64 object-cover cursor-pointer"
                 src={product.imgSrc}
                 alt={product.name}
+                onClick={() => handleImageClick(product)}
               />
               <div className="p-4">
                 <h3 className="text-lg font-semibold text-gray-800">{product.name}</h3>
@@ -76,7 +80,7 @@ function Men() {
                 <p className="text-gray-800">Discounted Price: Rs-{discountedPrice}</p>
                 <StarRating rating={product.rating} />
                 <button
-                  onClick={() => handleAddToCart(product)} // Use the function to add product to cart
+                  onClick={() => handleAddToCart(product)}
                   className="mt-4 w-full px-4 py-2 text-white bg-gradient-to-r from-purple-500 to-pink-400 hover:bg-purple-700 rounded-lg focus:outline-none"
                 >
                   Add to Cart
@@ -86,6 +90,37 @@ function Men() {
           );
         })}
       </div>
+
+      {/* Modal for Product Details */}
+      {selectedProduct && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="bg-white w-96 p-6 rounded-lg shadow-lg relative">
+            <button onClick={handleCloseModal} className="absolute top-2 right-2 text-gray-600">
+              &times;
+            </button>
+            <img
+              className="w-full h-64 object-cover rounded-md"
+              src={selectedProduct.imgSrc}
+              alt={selectedProduct.name}
+            />
+            <h3 className="text-2xl font-semibold text-gray-800 mt-4">{selectedProduct.name}</h3>
+            <p className="text-gray-600">
+              Original Price: <span className="line-through">Rs-{selectedProduct.price}</span>
+            </p>
+            <p className="text-gray-800">
+              Discounted Price: Rs-{selectedProduct.price - (selectedProduct.price * (selectedProduct.discount / 100))}
+            </p>
+            <StarRating rating={selectedProduct.rating} />
+            <p className="mt-4">Description: This is a brand new {selectedProduct.name}.</p>
+            <button
+              onClick={() => handleAddToCart(selectedProduct)}
+              className="mt-4 w-full px-4 py-2 text-white bg-gradient-to-r from-purple-500 to-pink-400 hover:bg-purple-700 rounded-lg focus:outline-none"
+            >
+              Add to Cart
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
