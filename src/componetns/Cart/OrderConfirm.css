@@ -6,11 +6,13 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background: linear-gradient(to bottom, #f8f8f8, #e8e8e8);
+    background: linear-gradient(135deg, #f8f8f8, #e8e8e8);
     overflow: hidden;
-  }
-  
-  .falling-flowers-container {
+    font-family: 'Poppins', sans-serif; /* Add a clean, modern font */
+    background-size: cover;
+}
+
+.falling-flowers-container {
     position: absolute;
     top: 0;
     left: 0;
@@ -18,30 +20,42 @@
     height: 100%;
     pointer-events: none;
     overflow: hidden;
-  }
-  
-  .falling-flower {
+}
+
+.falling-flower {
     position: absolute;
     top: -50px;
     width: 24px;
     height: 24px;
-    background-image: url('/assets/Images/flower2.jpg'); /* Replace with your flower image path */
+    background-image: url('/assets/Images/flower2.jpg'); /* Flower image */
     background-size: cover;
     opacity: 0.8;
     animation-name: fall;
     animation-timing-function: linear;
-  }
-  
-  @keyframes fall {
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes fall {
     0% {
-      transform: translateY(-50px) rotate(0deg);
+        transform: translateY(-50px) rotate(0deg);
+        opacity: 0.8;
+    }
+    25% {
+        transform: translateY(30vh) rotate(180deg);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(60vh) rotate(360deg);
+        opacity: 0.8;
     }
     100% {
-      transform: translateY(100vh) rotate(360deg);
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0.5;
     }
-  }
-  
-  .order-confirm-content {
+}
+
+.order-confirm-content {
     position: relative;
     z-index: 10;
     text-align: center;
@@ -49,13 +63,43 @@
     padding: 2rem;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-  
-  .order-confirm-content h2 {
+    width: 80%;
+    max-width: 500px;
+    transition: transform 0.3s ease;
+}
+
+.order-confirm-content:hover {
+    transform: scale(1.05);
+}
+
+.order-confirm-content h2 {
     color: #8b5cf6;
-  }
-  
-  .order-confirm-content p {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.order-confirm-content p {
     color: #4a4a4a;
-  }
-  
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.order-confirm-content .cta-button {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 10px 25px;
+    background-color: #8b5cf6;
+    color: white;
+    font-size: 1rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.order-confirm-content .cta-button:hover {
+    background-color: #7a46c7;
+}
+
