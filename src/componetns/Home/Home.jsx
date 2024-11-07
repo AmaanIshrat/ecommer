@@ -80,7 +80,7 @@ export default function Home() {
         </SwiperSlide>
 
         <SwiperSlide>
-          <div className="bg-[url('/assets/Images/Mn.jpg')] bg-cover bg-center">
+          <div className="bg-[url('/assets/Images/Mn.jpg')] bg-center bg-no-repeat bg-cover h-screen">
             <div className="mx-auto w-full max-w-7xl">
               <aside className="relative overflow-hidden text-black rounded-lg sm:mx-16 mx-2 sm:py-16">
                 <div className="relative z-10 max-w-screen-xl px-4 pb-20 pt-10 sm:py-24 mx-auto sm:px-6 lg:px-8">
@@ -99,6 +99,7 @@ export default function Home() {
               </aside>
             </div>
           </div>
+
         </SwiperSlide>
 
         <SwiperSlide>
