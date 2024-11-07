@@ -27,11 +27,13 @@ const CheckoutModal = ({ isOpen, onClose }) => {
   };
 
   const handleConfirmOrder = () => {
+
+    console.log("Confirm order clicked!");
     // Clear the cart after order confirmation
     clearCart();
 
     // Close the modal
-    onClose();
+    // onClose();
 
     // Navigate to the OrderConfirmation page
     navigate('/order-confirmation');
