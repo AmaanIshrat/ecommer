@@ -60,7 +60,8 @@ export default function Footer() {
           <h3 className="text-lg font-semibold mb-4">Subscribe to Our Newsletter</h3>
           <form className="flex justify-center space-x-2">
             <input type="email" placeholder="Enter your email" className="p-2 rounded-md w-full max-w-xs border border-gray-300 text-gray-700" />
-            <button type="submit" className="bg-gradient-to-r from-purple-500 to-pink-400 text-white p-2 rounded-md">Subscribe</button>
+            <button type="submit" className={`${
+          theme === 'dark' ? 'bg-gray-800 text-white hover:bg-purple-600' : 'bg-gradient-to-r from-purple-500 to-pink-400 text-white hover:bg-purple-600'}    p-2 rounded-md`}>Subscribe</button>
           </form>
         </div>
 

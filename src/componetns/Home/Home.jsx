@@ -290,9 +290,9 @@ export default function Home() {
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className={`max-w-md mx-auto ${theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-white text-gray-900'} p-6 rounded-lg shadow-md text-center`}>
+            <div className={`max-w-md mx-auto ${theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-white text-gray-900'} p-6 rounded-lg shadow-md text-center`}>
                 <p className="text-lg font-medium ">
-                  "Best products. Highly recommended!"
+                "Best products. Highly recommended!"
                 </p>
                 <p className="mt-4 text-sm font-semibold text-purple-600">- Rohan, Bangalore</p>
               </div>

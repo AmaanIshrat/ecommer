@@ -80,11 +80,11 @@ function Women() {
                 <p className="text-gray-600">
                   Original Price: <span className="line-through">Rs-{product.price}</span>
                 </p>
-                <p className={`text-gray-800 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-800'}`}>Discounted Price: Rs-{discountedPrice}</p>
+                <p className={` ${theme === 'dark' ? 'text-gray-300' : 'text-gray-800'}`}>Discounted Price: Rs-{discountedPrice}</p>
                 <StarRating rating={product.rating} />
                 <button
                   onClick={() => handleAddToCart(product)}
-                  className="mt-4 w-full px-4 py-2 text-white bg-gradient-to-r from-purple-500 to-pink-400 hover:bg-purple-700 rounded-lg focus:outline-none"
+                  className={`mt-4 w-full px-4 py-2  ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-gradient-to-r from-purple-500 to-pink-400 text-white'} hover:bg-purple-700 rounded-lg focus:outline-none`}
                 >
                   Add to Cart
                 </button>
@@ -111,8 +111,8 @@ function Women() {
             <p className="mt-4">This is {selectedProduct.name}.</p>
             <button
               onClick={() => handleAddToCart(selectedProduct)}
-              className="mt-4 w-full px-4 py-2 text-white bg-gradient-to-r from-purple-500 to-pink-400 hover:bg-purple-700 rounded-lg focus:outline-none"
-            >
+              className={`mt-4 w-full px-4 py-2 ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-gray-800'} hover:bg-purple-700 rounded-lg focus:outline-none`}
+              >
               Add to Cart
             </button>
           </div>

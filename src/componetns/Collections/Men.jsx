@@ -23,11 +23,12 @@ const StarRating = ({ rating }) => {
 
 function Men() {
   const { addToCart } = useContext(CartContext);
-  const { theme } = useContext(ThemeContext); // Access the theme state
+  const { theme } = useContext(ThemeContext);
   const [successMessage, setSuccessMessage] = useState('');
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   const products = [
+    
     { name: 'Formal Wear', price: 599, discount: 10, imgSrc: '/assets/Images/M1.jpg', rating: 4 },
     { name: 'Original', price: 699, discount: 15, imgSrc: '/assets/Images/M2.jpg', rating: 5 },
     { name: 'Sport', price: 499, discount: 20, imgSrc: '/assets/Images/M3.jpg', rating: 3 },
@@ -38,7 +39,7 @@ function Men() {
     { name: 'Formal Shirt', price: 699, discount: 10, imgSrc: '/assets/Images/M8.jpg', rating: 5 },
     { name: 'T-Shirt', price: 599, discount: 20, imgSrc: '/assets/Images/M9.jpg', rating: 4 },
     { name: 'fashion-T-Shirt', price: 599, discount: 30, imgSrc: '/assets/Images/M2.jpg', rating: 4 },
- 
+  
   ];
 
   const handleAddToCart = (product) => {
@@ -56,34 +57,38 @@ function Men() {
   };
 
   return (
-    <div className={`mt-12 px-4 sm:px-16 ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-gray-800'}`}>
+    <div className={`mt-12 px-4 sm:px-16 ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-black'}`}>
       {successMessage && (
-        <div className="fixed top-16 right-4 bg-green-500 text-white px-4 py-2 rounded-md shadow-md z-50">
-          {successMessage}
-        </div>
+       <div className={`fixed top-16 right-4 px-4 py-2 rounded-md shadow-md z-50 ${theme === 'dark' ? 'bg-green-700' : 'bg-green-500'} text-white`}>
+       {successMessage}
+     </div>
       )}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {products.map((product, index) => {
           const discountedPrice = product.price - (product.price * (product.discount / 100));
           return (
-            <div key={index} className={`max-w-sm shadow-lg rounded-lg mx-auto ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
-              <img
-                className="w-full h-64 object-cover cursor-pointer"
-                src={product.imgSrc}
-                alt={product.name}
-                onClick={() => handleImageClick(product)}
-              />
-              <div className="p-4">
-                <h3 className={`text-lg font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>{product.name}</h3>
-                <p className="text-gray-600">
-                  Original Price: <span className="line-through">Rs-{product.price}</span>
-                </p>
-                <p className={`text-gray-800 ${theme === 'dark' ? 'text-gray-200' : ''}`}>Discounted Price: Rs-{discountedPrice}</p>
-                <StarRating rating={product.rating} />
+            <div key={index} className={`max-w-sm shadow-lg rounded-lg mx-auto ${theme === 'dark' ? 'bg-gray-800 text-white'  : 'bg-white text-black'} shadow-lg`}>
+              <div className="h-64 w-full overflow-hidden flex items-center justify-center">
+                <img
+                  className="object-cover h-full w-full cursor-pointer"
+                  src={product.imgSrc}
+                  alt={product.name}
+                  onClick={() => handleImageClick(product)}
+                />
+              </div>
+              <div className="p-4 min-h-[180px] flex flex-col justify-between">
+                <div>
+                  <h3 className={`text-lg font-semibold ${theme === 'dark' ? 'text-white' : 'text-black'}`}>{product.name}</h3>
+                  <p className="text-gray-600">
+                    Original Price: <span className="line-through">Rs-{product.price}</span>
+                  </p>
+                  <p className={` ${theme === 'dark' ? 'text-gray-200' : ''}`}>Discounted Price: Rs-{discountedPrice}</p>
+                  <StarRating rating={product.rating} />
+                </div>
                 <button
                   onClick={() => handleAddToCart(product)}
-                  className="mt-4 w-full px-4 py-2 text-white bg-gradient-to-r from-purple-500 to-pink-400 hover:bg-purple-700 rounded-lg focus:outline-none"
+                  className={`mt-4 w-full px-4 py-2 ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-gradient-to-r from-purple-500 to-pink-400 text-white'} hover:bg-purple-700 rounded-lg focus:outline-none`}
                 >
                   Add to Cart
                 </button>
