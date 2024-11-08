@@ -1,14 +1,21 @@
+import { useContext } from 'react';
 import React from 'react';
+import { ThemeContext } from '../Context/ThemeContext';
 
 export default function About() {
+  const { theme } = useContext(ThemeContext);
+
   return (
-    <div className="container mx-auto my-8 p-4">
+    <div  className={`${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-black'}`}>
+    <div
+      className={`container mx-auto my-8 p-4 `}
+    >
       <h1 className="text-4xl font-bold text-center mb-6">About Our E-Commerce Website</h1>
-      
+
       <p className="text-lg text-center mb-4">
         Welcome to our e-commerce website! We are dedicated to providing you with the best shopping experience possible.
       </p>
-      
+
       <div className="flex flex-wrap justify-center">
         <img
           src="/assets/Images/ab1.png" // Replace with your image URL
@@ -39,10 +46,11 @@ export default function About() {
         <li>Fast shipping and easy returns</li>
         <li>Secure payment options</li>
       </ul>
-      
+
       <p className="text-lg text-center">
         Thank you for choosing us for your shopping needs!
       </p>
+    </div>
     </div>
   );
 }

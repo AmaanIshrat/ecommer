@@ -1,8 +1,9 @@
-// src/components/FAQ.js
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { ThemeContext } from '../Context/ThemeContext'; // Adjust path to your ThemeContext
 
 export default function FAQ() {
   const [visibleAnswers, setVisibleAnswers] = useState({});
+  const { theme } = useContext(ThemeContext); // Access theme from ThemeContext
 
   const toggleAnswer = (questionId) => {
     setVisibleAnswers((prev) => ({
@@ -12,9 +13,10 @@ export default function FAQ() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-4">
+    <div className={`max-w-3xl mx-auto p-4 ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}>
       <h1 className="text-2xl font-bold mb-4">Frequently Asked Questions</h1>
-      <div className="mb-4 border border-gray-300 rounded-md bg-light-purple-100 p-4">
+
+      <div className={`mb-4 border rounded-md p-4 ${theme === 'dark' ? 'border-gray-700 bg-gray-800' : 'border-gray-300 bg-purple-100'}`}>
         <h2 className="font-semibold flex justify-between items-center">
           Question 1: What is this site about?
           <button
@@ -25,12 +27,13 @@ export default function FAQ() {
           </button>
         </h2>
         {visibleAnswers[1] && (
-          <p className="bg-light-purple-200 p-2 rounded-md mt-2">
+          <p className={`p-2 rounded-md mt-2 ${theme === 'dark' ? 'bg-gray-700' : 'bg-purple-200'}`}>
             This site is about providing information on our product collections, and more.
           </p>
         )}
       </div>
-      <div className="mb-4 border border-gray-300 rounded-md bg-light-purple-100 p-4">
+
+      <div className={`mb-4 border rounded-md p-4 ${theme === 'dark' ? 'border-gray-700 bg-gray-800' : 'border-gray-300 bg-purple-100'}`}>
         <h2 className="font-semibold flex justify-between items-center">
           Question 2: How can I contact support?
           <button
@@ -41,16 +44,15 @@ export default function FAQ() {
           </button>
         </h2>
         {visibleAnswers[2] && (
-          <p className="bg-light-purple-200 p-2 rounded-md mt-2">
+          <p className={`p-2 rounded-md mt-2 ${theme === 'dark' ? 'bg-gray-700' : 'bg-purple-200'}`}>
             You can contact support via the contact page.
           </p>
         )}
       </div>
-      {/* Add more questions as needed with similar structure */}
-      
-      <div className="mb-4 border border-gray-300 rounded-md bg-light-purple-100 p-4">
+
+      <div className={`mb-4 border rounded-md p-4 ${theme === 'dark' ? 'border-gray-700 bg-gray-800' : 'border-gray-300 bg-purple-100'}`}>
         <h2 className="font-semibold flex justify-between items-center">
-          Question 3: How many different collections you are currently have?
+          Question 3: How many different collections do you currently have?
           <button
             onClick={() => toggleAnswer(3)}
             className="text-purple-500 focus:outline-none"
@@ -59,8 +61,8 @@ export default function FAQ() {
           </button>
         </h2>
         {visibleAnswers[3] && (
-          <p className="bg-light-purple-200 p-2 rounded-md mt-2">
-            We have three different collections right now in fututre we add more categories .
+          <p className={`p-2 rounded-md mt-2 ${theme === 'dark' ? 'bg-gray-700' : 'bg-purple-200'}`}>
+            We have three different collections right now. We plan to add more in the future.
           </p>
         )}
       </div>

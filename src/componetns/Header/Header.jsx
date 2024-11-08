@@ -3,6 +3,9 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { FaShoppingCart } from 'react-icons/fa';
 import logo from '/assets/Images/Elog2.jpg';
 import { CartContext } from '../Context/CartContext';
+import { SunIcon, MoonIcon } from '@heroicons/react/outline'; // Icons for dark/light mode
+
+import { ThemeContext } from '../Context/ThemeContext';
 
 export default function Header() {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -12,6 +15,7 @@ export default function Header() {
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
   const { cartItems } = useContext(CartContext);
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
   const handleScroll = () => {
     const currentScrollPosition = window.pageYOffset;
@@ -60,16 +64,23 @@ export default function Header() {
     setIsDropdownOpen(false); // Close dropdown when mobile menu items are clicked
   };
 
-  // Handle cart icon click to navigate to the Cart page
   const handleCartClick = () => {
-    navigate('/cart'); // Navigate to the Cart page when the cart icon is clicked
+    navigate('/cart');
   };
+
+
+  useEffect(() => {
+    // Apply the theme to the root element or body
+    document.body.className = theme === 'dark' ? 'dark' : 'light';
+  }, [theme]);
+
+
 
   return (
     <header
-      className={`shadow sticky top-0 z-50 transition-transform duration-300 ${isNavbarVisible ? 'translate-y-0' : '-translate-y-full'}`}
+      className={`shadow sticky top-0 z-50 transition-transform duration-300 ${isNavbarVisible ? 'translate-y-0' : '-translate-y-full'} ${theme === 'dark' ? 'bg-gray-900' : 'bg-gradient-to-r from-purple-500 to-pink-400'}`}
     >
-      <nav className="bg-gradient-to-r from-purple-500 to-pink-400 border-gray-200 px-4 lg:px-6 py-2.5">
+      <nav className="border-gray-200 px-4 lg:px-6 py-2.5">
         <div className="flex justify-between items-center mx-auto max-w-screen-xl">
           {/* Left: Logo */}
           <div className="flex-grow flex justify-center">
@@ -114,7 +125,7 @@ export default function Header() {
                           <NavLink
                             to="/men"
                             className="block px-4 py-2 text-gray-800 hover:bg-gradient-to-r from-purple-500 to-pink-400 hover:text-white"
-                            onClick={closeMobileMenu} // Close menu after selection
+                            onClick={closeMobileMenu}
                           >
                             Men
                           </NavLink>
@@ -123,7 +134,7 @@ export default function Header() {
                           <NavLink
                             to="/women"
                             className="block px-4 py-2 text-gray-800 hover:bg-gradient-to-r from-purple-500 to-pink-400 hover:text-white"
-                            onClick={closeMobileMenu} // Close menu after selection
+                            onClick={closeMobileMenu}
                           >
                             Women
                           </NavLink>
@@ -132,7 +143,7 @@ export default function Header() {
                           <NavLink
                             to="/kids"
                             className="block px-4 py-2 text-gray-800 hover:bg-gradient-to-r from-purple-500 to-pink-400 hover:text-white"
-                            onClick={closeMobileMenu} // Close menu after selection
+                            onClick={closeMobileMenu}
                           >
                             Kids
                           </NavLink>
@@ -161,9 +172,10 @@ export default function Header() {
             </ul>
           </div>
 
-          {/* Right: Cart Icon and Mobile Menu Button */}
+          {/* Right: Cart Icon, Theme Toggle, and Mobile Menu Button */}
           <div className="flex items-center space-x-4">
-            <div className="relative" onClick={handleCartClick}> {/* Handle cart icon click */}
+            {/* Cart Icon */}
+            <div className="relative" onClick={handleCartClick}>
               <FaShoppingCart className="text-3xl text-white cursor-pointer" />
               {cartItems.length > 0 && (
                 <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
@@ -172,10 +184,18 @@ export default function Header() {
               )}
             </div>
 
-            <button
-              onClick={toggleMobileMenu}
-              className="text-white lg:hidden"
-            >
+         
+            {/* Dark/Light Mode Toggle Button */}
+            <button onClick={toggleTheme} className="text-white">
+              {theme === 'light' ? (
+                <MoonIcon className="w-6 h-6" />
+              ) : (
+                <SunIcon className="w-6 h-6" />
+              )}
+            </button>
+
+            {/* Mobile Menu Toggle Button */}
+            <button onClick={toggleMobileMenu} className="text-white lg:hidden">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
               </svg>
@@ -192,7 +212,7 @@ export default function Header() {
               <NavLink
                 to="/"
                 className={({ isActive }) => `block py-2 duration-200 ${isActive ? 'text-purple-800 underline' : 'text-white'}`}
-                onClick={closeMobileMenu} // Close mobile menu after selection
+                onClick={closeMobileMenu}
               >
                 Home
               </NavLink>
@@ -201,81 +221,27 @@ export default function Header() {
               <NavLink
                 to="/about"
                 className={({ isActive }) => `block py-2 duration-200 ${isActive ? 'text-purple-800 underline' : 'text-white'}`}
-                onClick={closeMobileMenu} // Close mobile menu after selection
+                onClick={closeMobileMenu}
               >
                 About
-              </NavLink>
-            </li>
-            <li>
-              <div className="relative" ref={dropdownRef}>
-                <button
-                  onClick={handleDropdownClick}
-                  className={`block py-2 px-4 rounded-lg transition-all duration-300 text-white bg-gradient-to-r from-purple-500 to-pink-400 border-b border-transparent hover:bg-purple-700 hover:border-purple-700 hover:scale-105 lg:hover:bg-transparent lg:hover:text-purple-500 lg:text-white lg:hover:border-purple-500 lg:hover:underline`}
-
-                >
-                  Collections
-                </button>
-                {isDropdownOpen && (
-                  <div className="absolute left-0 z-10 mt-2 w-48 bg-white rounded-md shadow-lg">
-                    <ul className="py-1" aria-labelledby="dropdown">
-                      <li>
-                        <NavLink
-                          to="/men"
-                          className="block px-4 py-2 text-gray-800 hover:bg-gradient-to-r from-purple-500 to-pink-400 hover:text-white"
-                          onClick={() => {
-                            closeMobileMenu(); // Close mobile menu
-                            setIsDropdownOpen(false); // Close dropdown
-                          }}
-                        >
-                          Men
-                        </NavLink>
-                      </li>
-                      <li>
-                        <NavLink
-                          to="/women"
-                          className="block px-4 py-2 text-gray-800 hover:bg-gradient-to-r from-purple-500 to-pink-400 hover:text-white"
-                          onClick={() => {
-                            closeMobileMenu(); // Close mobile menu
-                            setIsDropdownOpen(false); // Close dropdown
-                          }}
-                        >
-                          Women
-                        </NavLink>
-                      </li>
-                      <li>
-                        <NavLink
-                          to="/kids"
-                          className="block px-4 py-2 text-gray-800 hover:bg-gradient-to-r from-purple-500 to-pink-400 hover:text-white"
-                          onClick={() => {
-                            closeMobileMenu(); // Close mobile menu
-                            setIsDropdownOpen(false); // Close dropdown
-                          }}
-                        >
-                          Kids
-                        </NavLink>
-                      </li>
-                    </ul>
-                  </div>
-                )}
-              </div>
-            </li>
-
-            <li>
-              <NavLink
-                to="/faq"
-                className={({ isActive }) => `block py-2 duration-200 ${isActive ? 'text-purple-800 underline' : 'text-white'}`}
-                onClick={closeMobileMenu} // Close mobile menu after selection
-              >
-                FAQ
               </NavLink>
             </li>
             <li>
               <NavLink
                 to="/contact"
                 className={({ isActive }) => `block py-2 duration-200 ${isActive ? 'text-purple-800 underline' : 'text-white'}`}
-                onClick={closeMobileMenu} // Close mobile menu after selection
+                onClick={closeMobileMenu}
               >
                 Contact
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/cart"
+                className="block py-2 duration-200 text-white"
+                onClick={closeMobileMenu}
+              >
+                Cart
               </NavLink>
             </li>
           </ul>

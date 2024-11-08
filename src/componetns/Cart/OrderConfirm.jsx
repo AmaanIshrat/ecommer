@@ -1,7 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import './OrderConfirm.css';
+import { ThemeContext } from '../Context/ThemeContext';
 
 const OrderConfirm = () => {
+  const { theme } = useContext(ThemeContext);
+
   useEffect(() => {
     const container = document.querySelector('.falling-flowers-container');
 
@@ -16,17 +19,15 @@ const OrderConfirm = () => {
     }
   }, []);
 
-  
-
   return (
-    <div className="order-confirm-page">
+    <div className={`order-confirm-page ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-black'}`}>
       <div className="falling-flowers-container"></div>
       <div className="order-confirm-content">
-        <h2 className="text-3xl font-bold text-purple-600 mb-4">Order Confirmed!</h2>
-        <p className="text-gray-700 mb-6">
+        <h2 className={`text-3xl font-bold ${theme === 'dark' ? 'text-purple-400' : 'text-purple-600'} mb-4`}>Order Confirmed!</h2>
+        <p className={`text-lg ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} mb-6`}>
           Thank you for your purchase! You will receive a confirmation email shortly.
         </p>
-        <p className="text-lg font-semibold text-green-600">
+        <p className={`text-lg font-semibold ${theme === 'dark' ? 'text-green-400' : 'text-green-600'}`}>
           Your order has been successfully placed.
         </p>
       </div>

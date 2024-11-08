@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { CartContext } from '../Context/CartContext';
+import { ThemeContext } from '../Context/ThemeContext';
 
 const StarRating = ({ rating }) => {
   const stars = Array(5).fill(0);
@@ -22,6 +23,7 @@ const StarRating = ({ rating }) => {
 
 function Women() {
   const { addToCart } = useContext(CartContext);
+  const { theme } = useContext(ThemeContext);
   const [successMessage, setSuccessMessage] = useState('');
   const [selectedProduct, setSelectedProduct] = useState(null);
 
@@ -51,9 +53,9 @@ function Women() {
   };
 
   return (
-    <div className="mt-12 px-4 sm:px-16">
+    <div className={`mt-12 px-4 sm:px-16 ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-black'}`}>
       {successMessage && (
-        <div className="fixed top-16 right-4 bg-green-500 text-white px-4 py-2 rounded-md shadow-md z-50">
+        <div className={`fixed top-16 right-4 px-4 py-2 rounded-md shadow-md z-50 ${theme === 'dark' ? 'bg-green-700' : 'bg-green-500'} text-white`}>
           {successMessage}
         </div>
       )}
@@ -62,7 +64,7 @@ function Women() {
         {products.map((product, index) => {
           const discountedPrice = product.price - (product.price * (product.discount / 100));
           return (
-            <div key={index} className="max-w-sm bg-white shadow-lg rounded-lg mx-auto">
+            <div key={index} className={`max-w-sm rounded-lg mx-auto ${theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-white text-black'} shadow-lg`}>
               <img
                 className="w-full h-64 object-cover cursor-pointer"
                 src={product.imgSrc}
@@ -70,11 +72,11 @@ function Women() {
                 onClick={() => handleImageClick(product)}
               />
               <div className="p-4">
-                <h3 className="text-lg font-semibold text-gray-800">{product.name}</h3>
-                <p className="text-gray-600">
+                <h3 className="text-lg font-semibold">{product.name}</h3>
+                <p>
                   Original Price: <span className="line-through">Rs-{product.price}</span>
                 </p>
-                <p className="text-gray-800">Discounted Price: Rs-{discountedPrice}</p>
+                <p>Discounted Price: Rs-{discountedPrice}</p>
                 <StarRating rating={product.rating} />
                 <button
                   onClick={() => handleAddToCart(product)}
@@ -89,17 +91,17 @@ function Women() {
       </div>
 
       {selectedProduct && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div className="bg-white w-96 p-6 rounded-lg shadow-lg relative">
+        <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50">
+          <div className={`w-96 p-6 rounded-lg shadow-lg relative ${theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-white text-black'}`}>
             <button onClick={handleCloseModal} className="absolute top-2 right-2 text-gray-600">
               &times;
             </button>
             <img className="w-full h-64 object-cover rounded-md" src={selectedProduct.imgSrc} alt={selectedProduct.name} />
-            <h3 className="text-2xl font-semibold text-gray-800 mt-4">{selectedProduct.name}</h3>
-            <p className="text-gray-600">
+            <h3 className="text-2xl font-semibold mt-4">{selectedProduct.name}</h3>
+            <p>
               Original Price: <span className="line-through">Rs-{selectedProduct.price}</span>
             </p>
-            <p className="text-gray-800">
+            <p>
               Discounted Price: Rs-{selectedProduct.price - (selectedProduct.price * (selectedProduct.discount / 100))}
             </p>
             <StarRating rating={selectedProduct.rating} />

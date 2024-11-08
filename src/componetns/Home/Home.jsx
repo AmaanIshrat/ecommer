@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
+import { ThemeContext } from '../Context/ThemeContext';
 
 // Countdown Component
 function Countdown({ targetDate }) {
@@ -38,6 +39,7 @@ function Countdown({ targetDate }) {
 
 // Home Component
 export default function Home() {
+  const { theme } = useContext(ThemeContext);
   return (
     <>
       {/* Promotional Swiper Section */}
@@ -61,7 +63,7 @@ export default function Home() {
               <aside className="relative overflow-hidden text-black rounded-lg sm:mx-16 mx-2 sm:py-16">
                 <div className="relative z-10 max-w-screen-xl px-4 pb-20 pt-10 sm:py-24 mx-auto sm:px-6 lg:px-8">
                   <div className="max-w-xl sm:mt-1 mt-80 space-y-8 text-center sm:text-right sm:ml-auto">
-                    <h4 className="text-4xl font-serif font-bold sm:text-5xl leading-tight sm:leading-snug text-purple-800 tracking-wider">
+                    <h4 className={`text-4xl font-serif font-bold sm:text-5xl leading-tight sm:leading-snug ${theme === 'dark' ? ' text-white' : ' text-gray-900'} tracking-wider`}>
                       Click here to Know more
                       <span className="hidden sm:block text-4xl">Shopping</span>
                     </h4>
@@ -85,7 +87,7 @@ export default function Home() {
               <aside className="relative overflow-hidden text-black rounded-lg sm:mx-16 mx-2 sm:py-16">
                 <div className="relative z-10 max-w-screen-xl px-4 pb-20 pt-10 sm:py-24 mx-auto sm:px-6 lg:px-8">
                   <div className="max-w-xl sm:mt-1 mt-80 space-y-8 text-center sm:text-right sm:ml-auto">
-                    <h4 className="text-4xl font-serif font-bold sm:text-5xl leading-tight sm:leading-snug text-purple-800 tracking-wider">
+                    <h4 className={`text-4xl font-serif font-bold sm:text-5xl leading-tight sm:leading-snug ${theme === 'dark' ? ' text-white' : ' text-gray-900'} tracking-wider`}>
                       Discover Our Latest Collection for Men!
                     </h4>
                     <Link
@@ -107,7 +109,7 @@ export default function Home() {
             <aside className="relative overflow-hidden text-black rounded-lg sm:mx-16 mx-2 sm:py-16">
               <div className="relative z-10 max-w-screen-xl px-4 pb-20 pt-10 sm:py-24 mx-auto sm:px-6 lg:px-8">
                 <div className="max-w-xl sm:mt-1 mt-80 space-y-8 text-center sm:text-right sm:ml-auto">
-                  <h4 className="text-4xl font-serif font-bold sm:text-5xl leading-tight sm:leading-snug text-purple-800 tracking-wider">
+                  <h4 className={`text-4xl font-serif font-bold sm:text-5xl leading-tight sm:leading-snug ${theme === 'dark' ? ' text-white' : ' text-gray-900'} tracking-wider`}>
                     Seasonal Discounts Available for Women Collections!
                   </h4>
                   <Link
@@ -124,7 +126,7 @@ export default function Home() {
       </Swiper>
 
       {/* Promotional Countdown Section */}
-      <section className="bg-gradient-to-r from-purple-500 to-pink-400 text-white py-12">
+      <section className={` ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-gradient-to-r from-purple-500 to-pink-400 text-white'}  py-12`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-extrabold mb-4">Limited Time Offer!</h2>
           <p className="text-lg mb-6">Get 20% off all orders placed before the countdown ends.</p>
@@ -151,7 +153,7 @@ export default function Home() {
       >
         {/* Men's Collection Slide */}
         <SwiperSlide>
-          <div className="max-w-sm bg-white shadow-xl rounded-lg overflow-hidden mx-auto border-2 border-purple-500 transform hover:scale-105 transition-all duration-300">
+          <div className={`max-w-sm ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'} shadow-xl rounded-lg overflow-hidden mx-auto border-2 border-purple-500 transform hover:scale-105 transition-all duration-300`}>
             <Link to="/men" className="category-card">
               <img
                 className="w-full h-64 object-cover"
@@ -159,7 +161,7 @@ export default function Home() {
                 alt="Men"
               />
               <div className="p-4 text-center">
-                <h3 className="text-lg font-semibold text-gray-800">Men's Collection</h3>
+                <h3 className="text-lg font-semibold ">Men's Collection</h3>
               </div>
             </Link>
           </div>
@@ -169,7 +171,7 @@ export default function Home() {
 
         {/* Women's Collection Slide */}
         <SwiperSlide>
-          <div className="max-w-sm bg-white shadow-xl rounded-lg overflow-hidden mx-auto border-2 border-purple-500 transform hover:scale-105 transition-all duration-300">
+          <div className={`max-w-sm ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'} shadow-xl rounded-lg overflow-hidden mx-auto border-2 border-purple-500 transform hover:scale-105 transition-all duration-300`}>
             <Link to="/women" className="category-card">
               <img
                 className="w-full h-64 object-cover"
@@ -177,7 +179,7 @@ export default function Home() {
                 alt="Women"
               />
               <div className="p-4 text-center">
-                <h3 className="text-lg font-semibold text-gray-800">Women's Collection</h3>
+                <h3 className="text-lg font-semibold ">Women's Collection</h3>
               </div>
             </Link>
           </div>
@@ -185,7 +187,7 @@ export default function Home() {
 
         {/* Kids' Collection Slide */}
         <SwiperSlide>
-          <div className="max-w-sm bg-white shadow-xl rounded-lg overflow-hidden mx-auto border-2 border-purple-500 transform hover:scale-105 transition-all duration-300">
+          <div className={`max-w-sm ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'} shadow-xl rounded-lg overflow-hidden mx-auto border-2 border-purple-500 transform hover:scale-105 transition-all duration-300`}>
             <Link to="/kids" className="category-card">
               <img
                 className="w-full h-64 object-cover"
@@ -193,52 +195,52 @@ export default function Home() {
                 alt="Kids"
               />
               <div className="p-4 text-center">
-                <h3 className="text-lg font-semibold text-gray-800">Kids' Collection</h3>
+                <h3 className="text-lg font-semibold ">Kids' Collection</h3>
               </div>
             </Link>
           </div>
         </SwiperSlide>
       </Swiper>
 
-      <section className="bg-gray-50 py-12">
+      <section className={`${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'} py-12`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
 
             {/* Free Delivery */}
-            <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-lg">
+            <div className={`flex flex-col items-center p-6 ${theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-white text-gray-900'} rounded-lg shadow-lg`}>
               <img
                 src="/assets/Images/FreeDelLogo.png" // Update path to your logo
                 alt="Free Delivery"
                 className="w-16 h-16 mb-4"
               />
-              <h3 className="text-xl font-semibold text-gray-900">Free Delivery</h3>
-              <p className="text-gray-600 mt-2">
+              <h3 className="text-xl font-semibold ">Free Delivery</h3>
+              <p className=" mt-2">
                 Enjoy free shipping on all orders.
               </p>
             </div>
 
             {/* Return & Refund */}
-            <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-lg">
+            <div className={`flex flex-col items-center p-6 ${theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-white text-gray-900'} rounded-lg shadow-lg`}>
               <img
                 src="/assets/Images/return log.jpg" // Update path to your logo
                 alt="Return and Refund"
                 className="w-16 h-16 mb-4"
               />
-              <h3 className="text-xl font-semibold text-gray-900">Return & Refund</h3>
-              <p className="text-gray-600 mt-2">
+              <h3 className="text-xl font-semibold ">Return & Refund</h3>
+              <p className=" mt-2">
                 Hassle-free returns and full refunds.
               </p>
             </div>
 
             {/* 24/7 Support */}
-            <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-lg">
+            <div className={`flex flex-col items-center p-6 ${theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-white text-gray-900'} rounded-lg shadow-lg`}>
               <img
                 src="/assets/Images/Support logo.png" // Update path to your logo
                 alt="24/7 Support"
                 className="w-16 h-16 mb-4"
               />
-              <h3 className="text-xl font-semibold text-gray-900">24/7 Support</h3>
-              <p className="text-gray-600 mt-2">
+              <h3 className="text-xl font-semibold ">24/7 Support</h3>
+              <p className=" mt-2">
                 We’re here to help anytime you need.
               </p>
             </div>
@@ -251,7 +253,7 @@ export default function Home() {
 
 
       {/* Customer Testimonials Carousel */}
-      <section className="bg-gray-100 py-12">
+      <section className={`${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'} py-12`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-6">
             What Our Customers Say
@@ -272,24 +274,24 @@ export default function Home() {
             className="mySwiper"
           >
             <SwiperSlide>
-              <div className="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md text-center">
-                <p className="text-lg font-medium text-gray-700">
+              <div className={`max-w-md mx-auto ${theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-white text-gray-900'} p-6 rounded-lg shadow-md text-center`}>
+                <p className="text-lg font-medium ">
                   "Amazing quality and I have seen the best products ever."
                 </p>
                 <p className="mt-4 text-sm font-semibold text-purple-600">- Amaan, Mumbai</p>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md text-center">
-                <p className="text-lg font-medium text-gray-700">
+              <div className={`max-w-md mx-auto ${theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-white text-gray-900'} p-6 rounded-lg shadow-md text-center`}>
+                <p className="text-lg font-medium ">
                   "Loved the fast delivery and quality of the product."
                 </p>
                 <p className="mt-4 text-sm font-semibold text-purple-600">- Sana, Delhi</p>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md text-center">
-                <p className="text-lg font-medium text-gray-700">
+              <div className={`max-w-md mx-auto ${theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-white text-gray-900'} p-6 rounded-lg shadow-md text-center`}>
+                <p className="text-lg font-medium ">
                   "Best products. Highly recommended!"
                 </p>
                 <p className="mt-4 text-sm font-semibold text-purple-600">- Rohan, Bangalore</p>
@@ -304,7 +306,7 @@ export default function Home() {
 
 
       {/* Featured Products Section */}
-      <section className="bg-gray-50 py-12">
+      <section className={`${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'} py-12`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-6">
             Featured Products
@@ -355,10 +357,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-white py-12">
+      <section className={`${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'} py-12`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-extrabold text-gray-900 mb-6">Our Story</h2>
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+          <h2 className="text-3xl font-extrabold  mb-6">Our Story</h2>
+          <p className="text-lg max-w-3xl mx-auto">
             Welcome to Shopping – where style meets soul. Our story started with a vision to create clothing that empowers individuals to express their true selves. From humble beginnings, we set out to craft pieces that are not just beautiful but meaningful, bringing together quality, comfort, and timeless design.
             <br />
 

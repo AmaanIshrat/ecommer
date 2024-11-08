@@ -1,8 +1,10 @@
 import React, { useState, useContext } from 'react';
 import { CartContext } from '../Context/CartContext';
 import { useNavigate } from 'react-router-dom';
+import { ThemeContext } from '../Context/ThemeContext';
 
 const CheckoutModal = ({ isOpen, onClose }) => {
+  const { theme } = useContext(ThemeContext);
   const { cartItems, clearCart } = useContext(CartContext);
   const navigate = useNavigate();
   const [step, setStep] = useState(1);
@@ -27,22 +29,15 @@ const CheckoutModal = ({ isOpen, onClose }) => {
   };
 
   const handleConfirmOrder = () => {
-
     console.log("Confirm order clicked!");
-    // Clear the cart after order confirmation
     clearCart();
-
-    // Close the modal
-    // onClose();
-
-    // Navigate to the OrderConfirmation page
     navigate('/order-confirmation');
   };
 
   return (
     isOpen && (
-      <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-        <div className="bg-white p-8 rounded-lg shadow-lg w-96">
+      <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50">
+        <div className={`p-8 rounded-lg shadow-lg w-96 ${theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-white text-black'}`}>
           {step === 1 && (
             <div>
               <h2 className="text-xl font-bold mb-4">Shipping Details</h2>
@@ -52,7 +47,7 @@ const CheckoutModal = ({ isOpen, onClose }) => {
                 placeholder="Full Name"
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full p-2 mb-2 border rounded"
+                className={`w-full p-2 mb-2 border rounded ${theme === 'dark' ? 'bg-gray-700 text-white border-gray-600' : 'bg-gray-100 text-black border-gray-300'}`}
               />
               <input
                 type="email"
@@ -60,7 +55,7 @@ const CheckoutModal = ({ isOpen, onClose }) => {
                 placeholder="Email"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full p-2 mb-2 border rounded"
+                className={`w-full p-2 mb-2 border rounded ${theme === 'dark' ? 'bg-gray-700 text-white border-gray-600' : 'bg-gray-100 text-black border-gray-300'}`}
               />
               <input
                 type="text"
@@ -68,10 +63,10 @@ const CheckoutModal = ({ isOpen, onClose }) => {
                 placeholder="Delivery Address"
                 value={formData.address}
                 onChange={handleChange}
-                className="w-full p-2 mb-2 border rounded"
+                className={`w-full p-2 mb-2 border rounded ${theme === 'dark' ? 'bg-gray-700 text-white border-gray-600' : 'bg-gray-100 text-black border-gray-300'}`}
               />
               <div className="flex justify-between mt-4">
-                <button onClick={onClose} className="px-4 py-2 bg-gray-200 rounded">Cancel</button>
+                <button onClick={onClose} className={`px-4 py-2 rounded ${theme === 'dark' ? 'bg-gray-600 text-white' : 'bg-gray-200 text-black'}`}>Cancel</button>
                 <button onClick={handleNextStep} className="px-4 py-2 bg-purple-500 text-white rounded">Next</button>
               </div>
             </div>
@@ -84,14 +79,14 @@ const CheckoutModal = ({ isOpen, onClose }) => {
                 name="paymentMethod"
                 value={formData.paymentMethod}
                 onChange={handleChange}
-                className="w-full p-2 mb-2 border rounded"
+                className={`w-full p-2 mb-2 border rounded ${theme === 'dark' ? 'bg-gray-700 text-white border-gray-600' : 'bg-gray-100 text-black border-gray-300'}`}
               >
                 <option value="">Select Payment Method</option>
                 <option value="creditCard">Credit/Debit Card</option>
                 <option value="cashOnDelivery">Cash on Delivery</option>
               </select>
               <div className="flex justify-between mt-4">
-                <button onClick={handlePreviousStep} className="px-4 py-2 bg-gray-200 rounded">Back</button>
+                <button onClick={handlePreviousStep} className={`px-4 py-2 rounded ${theme === 'dark' ? 'bg-gray-600 text-white' : 'bg-gray-200 text-black'}`}>Back</button>
                 <button onClick={handleNextStep} className="px-4 py-2 bg-purple-500 text-white rounded">Next</button>
               </div>
             </div>
@@ -106,7 +101,7 @@ const CheckoutModal = ({ isOpen, onClose }) => {
               <p>Payment Method: {formData.paymentMethod}</p>
               <p>Total Price: Rs-{totalPrice.toFixed(2)}</p>
               <div className="flex justify-between mt-4">
-                <button onClick={handlePreviousStep} className="px-4 py-2 bg-gray-200 rounded">Back</button>
+                <button onClick={handlePreviousStep} className={`px-4 py-2 rounded ${theme === 'dark' ? 'bg-gray-600 text-white' : 'bg-gray-200 text-black'}`}>Back</button>
                 <button
                   onClick={handleConfirmOrder}
                   className="px-4 py-2 bg-green-500 text-white rounded"

@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
+import { ThemeContext } from '../Context/ThemeContext'; // Adjust path to your ThemeContext
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -9,61 +10,61 @@ export default function Contact() {
     phoneNumber: '',
     message: '',
   });
-
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  
+  // Access the current theme
+  const { theme } = useContext(ThemeContext);
 
   // Handle form input change
   const handleInputChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Validate form data
-  const validateForm = () => {
-    const newErrors = {};
-    if (!formData.firstName.trim()) newErrors.firstName = 'First name is required';
-    if (!formData.lastName.trim()) newErrors.lastName = 'Last name is required';
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Email is invalid';
-    }
-    if (!formData.phoneNumber.trim()) {
-      newErrors.phoneNumber = 'Phone number is required';
-    } else if (!/^\d{10}$/.test(formData.phoneNumber)) {
-      newErrors.phoneNumber = 'Phone number is invalid';
-    }
-    if (!formData.message.trim()) newErrors.message = 'Message is required';
-    return newErrors;
-  };
-
-  // Handle form submit with API call
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const formErrors = validateForm();
-    if (Object.keys(formErrors).length === 0) {
-      try {
-        // API call with Axios
-        const response = await axios.post('https://sparkup-api.vercel.app/contact-us/createmessage', formData);
-        console.log('Response:', response.data);
-        setSubmitted(true);
-        setErrors({});
-      } catch (error) {
-        console.error('Error sending data:', error);
-        setErrors({ api: 'There was an issue sending your message. .' });
+  // ... Validation and API call code remains the same
+    // Validate form data
+    const validateForm = () => {
+      const newErrors = {};
+      if (!formData.firstName.trim()) newErrors.firstName = 'First name is required';
+      if (!formData.lastName.trim()) newErrors.lastName = 'Last name is required';
+      if (!formData.email.trim()) {
+        newErrors.email = 'Email is required';
+      } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+        newErrors.email = 'Email is invalid';
       }
-    } else {
-      setErrors(formErrors);
-      setSubmitted(false);
-    }
-  };
+      if (!formData.phoneNumber.trim()) {
+        newErrors.phoneNumber = 'Phone number is required';
+      } else if (!/^\d{10}$/.test(formData.phoneNumber)) {
+        newErrors.phoneNumber = 'Phone number is invalid';
+      }
+      if (!formData.message.trim()) newErrors.message = 'Message is required';
+      return newErrors;
+    };
+  
+    // Handle form submit with API call
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      const formErrors = validateForm();
+      if (Object.keys(formErrors).length === 0) {
+        try {
+          // API call with Axios
+          const response = await axios.post('https://sparkup-api.vercel.app/contact-us/createmessage', formData);
+          console.log('Response:', response.data);
+          setSubmitted(true);
+          setErrors({});
+        } catch (error) {
+          console.error('Error sending data:', error);
+          setErrors({ api: 'There was an issue sending your message. .' });
+        }
+      } else {
+        setErrors(formErrors);
+        setSubmitted(false);
+      }
+    };
 
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen p-4">
-      <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full mb-4">
+    <div className={`flex flex-col justify-center items-center min-h-screen p-4 ${theme === 'dark' ? 'bg-gray-900 text-black' : 'bg-white text-gray-900'}`}>
+      <div className={`p-8 rounded-lg shadow-lg max-w-md w-full mb-4 ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
         <h2 className="text-2xl font-semibold mb-6 text-center">Contact Us</h2>
         
         {submitted ? (

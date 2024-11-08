@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
-import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements,Routes, BrowserRouter as Router } from 'react-router-dom'
+import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements, Routes, BrowserRouter as Router } from 'react-router-dom'
 import Layout from './Layout.jsx'
 import Home from './componetns/Home/Home.jsx'
 import About from './componetns/About/About.jsx'
@@ -10,7 +10,7 @@ import FAQ from './componetns/FAQ/Faq.jsx'
 import Contact from './componetns/Contact/Contact.jsx'
 import OrderConfirm from './componetns/Cart/OrderConfirm.jsx'
 
-
+import { ThemeProvider, ThemeContext } from './componetns/Context/ThemeContext.jsx'
 
 
 import Men from './componetns/Collections/Men.jsx'
@@ -22,18 +22,18 @@ import { CartContext, CartProvider } from './componetns/Context/CartContext.jsx'
 
 
 
-
-const router = createBrowserRouter( 
+// 
+const router = createBrowserRouter(
   createRoutesFromElements(
 
-    
-    
+
+
     <Route path='/' element={<Layout />}>
       <Route path='' element={<Home />} />
       <Route path='about' element={<About />} />
       <Route path='faq' element={<FAQ />} />
       <Route path='contact' element={<Contact />} />
-      <Route path='cart' element={<Cart />}/>
+      <Route path='cart' element={<Cart />} />
       <Route path="men" element={<Men />} />
       <Route path="women" element={<Women />} />
       <Route path="kids" element={<Kids />} />
@@ -41,21 +41,20 @@ const router = createBrowserRouter(
       <Route path="knowme" element={<Knowme />} />
       <Route path="/order-confirmation" element={<OrderConfirm />} />
 
-      
-      
     </Route>
-     
-    
+
+
   )
 )
-// ljklkj
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <CartProvider>
-    
-    <RouterProvider router={router} />
-    </CartProvider>
-    
+    <ThemeProvider>
+      <CartProvider>
+
+        <RouterProvider router={router} />
+      </CartProvider>
+    </ThemeProvider>
+
   </React.StrictMode>,
 )

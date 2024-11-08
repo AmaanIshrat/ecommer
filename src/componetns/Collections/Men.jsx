@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { CartContext } from '../Context/CartContext';
+import { ThemeContext } from '../Context/ThemeContext';
 
-// Star Rating Component
 const StarRating = ({ rating }) => {
   const stars = Array(5).fill(0);
   return (
@@ -23,8 +23,9 @@ const StarRating = ({ rating }) => {
 
 function Men() {
   const { addToCart } = useContext(CartContext);
+  const { theme } = useContext(ThemeContext); // Access the theme state
   const [successMessage, setSuccessMessage] = useState('');
-  const [selectedProduct, setSelectedProduct] = useState(null); // State for modal
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   const products = [
     { name: 'Formal Wear', price: 599, discount: 10, imgSrc: '/assets/Images/M1.jpg', rating: 4 },
@@ -37,6 +38,7 @@ function Men() {
     { name: 'Formal Shirt', price: 699, discount: 10, imgSrc: '/assets/Images/M8.jpg', rating: 5 },
     { name: 'T-Shirt', price: 599, discount: 20, imgSrc: '/assets/Images/M9.jpg', rating: 4 },
     { name: 'fashion-T-Shirt', price: 599, discount: 30, imgSrc: '/assets/Images/M2.jpg', rating: 4 },
+ 
   ];
 
   const handleAddToCart = (product) => {
@@ -46,15 +48,15 @@ function Men() {
   };
 
   const handleImageClick = (product) => {
-    setSelectedProduct(product); // Set selected product to show in modal
+    setSelectedProduct(product);
   };
 
   const handleCloseModal = () => {
-    setSelectedProduct(null); // Close modal
+    setSelectedProduct(null);
   };
 
   return (
-    <div className="mt-12 px-4 sm:px-16">
+    <div className={`mt-12 px-4 sm:px-16 ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-gray-800'}`}>
       {successMessage && (
         <div className="fixed top-16 right-4 bg-green-500 text-white px-4 py-2 rounded-md shadow-md z-50">
           {successMessage}
@@ -65,7 +67,7 @@ function Men() {
         {products.map((product, index) => {
           const discountedPrice = product.price - (product.price * (product.discount / 100));
           return (
-            <div key={index} className="max-w-sm bg-white shadow-lg rounded-lg mx-auto">
+            <div key={index} className={`max-w-sm shadow-lg rounded-lg mx-auto ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
               <img
                 className="w-full h-64 object-cover cursor-pointer"
                 src={product.imgSrc}
@@ -73,11 +75,11 @@ function Men() {
                 onClick={() => handleImageClick(product)}
               />
               <div className="p-4">
-                <h3 className="text-lg font-semibold text-gray-800">{product.name}</h3>
+                <h3 className={`text-lg font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>{product.name}</h3>
                 <p className="text-gray-600">
                   Original Price: <span className="line-through">Rs-{product.price}</span>
                 </p>
-                <p className="text-gray-800">Discounted Price: Rs-{discountedPrice}</p>
+                <p className={`text-gray-800 ${theme === 'dark' ? 'text-gray-200' : ''}`}>Discounted Price: Rs-{discountedPrice}</p>
                 <StarRating rating={product.rating} />
                 <button
                   onClick={() => handleAddToCart(product)}
@@ -91,10 +93,9 @@ function Men() {
         })}
       </div>
 
-      {/* Modal for Product Details */}
       {selectedProduct && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div className="bg-white w-96 p-6 rounded-lg shadow-lg relative">
+        <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50">
+          <div className={`w-96 p-6 rounded-lg shadow-lg relative ${theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-white text-gray-800'}`}>
             <button onClick={handleCloseModal} className="absolute top-2 right-2 text-gray-600">
               &times;
             </button>
@@ -103,11 +104,11 @@ function Men() {
               src={selectedProduct.imgSrc}
               alt={selectedProduct.name}
             />
-            <h3 className="text-2xl font-semibold text-gray-800 mt-4">{selectedProduct.name}</h3>
-            <p className="text-gray-600">
+            <h3 className="text-2xl font-semibold mt-4">{selectedProduct.name}</h3>
+            <p>
               Original Price: <span className="line-through">Rs-{selectedProduct.price}</span>
             </p>
-            <p className="text-gray-800">
+            <p>
               Discounted Price: Rs-{selectedProduct.price - (selectedProduct.price * (selectedProduct.discount / 100))}
             </p>
             <StarRating rating={selectedProduct.rating} />
