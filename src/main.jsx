@@ -25,9 +25,6 @@ import { CartContext, CartProvider } from './componetns/Context/CartContext.jsx'
 // 
 const router = createBrowserRouter(
   createRoutesFromElements(
-
-
-
     <Route path='/' element={<Layout />}>
       <Route path='' element={<Home />} />
       <Route path='about' element={<About />} />
