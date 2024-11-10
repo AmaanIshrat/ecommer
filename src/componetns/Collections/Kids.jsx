@@ -55,7 +55,7 @@ function Women() {
   return (
     <div className={`mt-12 px-4 sm:px-16 ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-black'}`}>
       {successMessage && (
-        <div className={`fixed top-16 right-4 px-4 py-2 rounded-md shadow-md z-50 ${theme === 'dark' ? 'bg-green-700' : 'bg-green-500'} text-white`}>
+        <div className={`fixed top-16 right-4 px-4 py-2 rounded-md shadow-md z-50 ${theme === 'dark' ? 'bg-gray-700' : 'bg-green-500'} text-white`}>
           {successMessage}
         </div>
       )}
