@@ -96,6 +96,7 @@ export default function Contact() {
               <input
                 id="lastName"
                 name="lastName"
+                placeholder="Your last name"
                 type="text"
                 value={formData.lastName}
                 onChange={handleInputChange}

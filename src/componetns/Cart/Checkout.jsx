@@ -104,7 +104,7 @@ const CheckoutModal = ({ isOpen, onClose }) => {
                 <button onClick={handlePreviousStep} className={`px-4 py-2 rounded ${theme === 'dark' ? 'bg-gray-600 text-white' : 'bg-gray-200 text-black'}`}>Back</button>
                 <button
                   onClick={handleConfirmOrder}
-                  className="px-4 py-2 bg-green text-white rounded"
+                  className="px-4 py-2 bg-green-500 text-white rounded"
                 >
                   Confirm Order
                 </button>
