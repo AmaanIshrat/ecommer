@@ -70,11 +70,12 @@ function Women() {
           return (
             <div key={index} className={`max-w-sm shadow-lg rounded-lg mx-auto ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
               <img
-                className="w-full h-64 object-cover cursor-pointer"
+                className="w-64 h-auto aspect-square object-cover cursor-pointer" // Smaller square with aspect ratio
                 src={product.imgSrc}
                 alt={product.name}
                 onClick={() => handleImageClick(product)}
               />
+
               <div className="p-4">
                 <h3 className={`text-lg font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>{product.name}</h3>
                 <p className="text-gray-600">
@@ -112,7 +113,7 @@ function Women() {
             <button
               onClick={() => handleAddToCart(selectedProduct)}
               className={`mt-4 w-full px-4 py-2 ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-gray-800'} hover:bg-purple-700 rounded-lg focus:outline-none`}
-              >
+            >
               Add to Cart
             </button>
           </div>

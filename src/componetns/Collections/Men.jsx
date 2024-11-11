@@ -71,7 +71,7 @@ function Men() {
             <div key={index} className={`max-w-sm shadow-lg rounded-lg mx-auto ${theme === 'dark' ? 'bg-gray-800 text-white'  : 'bg-white text-black'} shadow-lg`}>
               <div className="h-64 w-full overflow-hidden flex items-center justify-center">
                 <img
-                  className="object-cover h-full w-full cursor-pointer"
+                  className="w-64 h-auto aspect-square object-cover cursor-pointer"
                   src={product.imgSrc}
                   alt={product.name}
                   onClick={() => handleImageClick(product)}

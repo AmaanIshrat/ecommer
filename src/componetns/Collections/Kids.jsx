@@ -66,7 +66,7 @@ function Women() {
           return (
             <div key={index} className={`max-w-sm rounded-lg mx-auto ${theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-white text-black'} shadow-lg`}>
               <img
-                className="w-full h-64 object-cover cursor-pointer"
+                className="w-64 h-auto aspect-square object-cover cursor-pointer"
                 src={product.imgSrc}
                 alt={product.name}
                 onClick={() => handleImageClick(product)}
