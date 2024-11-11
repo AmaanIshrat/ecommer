@@ -25,7 +25,7 @@ const Cart = () => {
             {cartItems.map((item, index) => (
               <li key={index} className={`${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} flex justify-between items-center p-4 rounded-lg shadow-md border-b ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'}`}>
                 <div className="flex items-center space-x-4">
-                  <img src={item.imgSrc} alt={item.name} className=" w-20  h-auto aspect-square object-cover rounded" />
+                  <img src={item.imgSrc} alt={item.name} className=" w-16  h-auto aspect-square object-cover rounded" />
                   <div>
                     <h3 className={`${theme === 'dark' ? 'text-white' : 'text-gray-800'} text-lg font-semibold`}>{item.name}</h3>
                     <p className={`${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>Price: Rs-{(item.price - (item.price * (item.discount / 100))).toFixed(2)}</p>
