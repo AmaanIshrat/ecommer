@@ -9,6 +9,8 @@ import About from './componetns/About/About.jsx'
 import FAQ from './componetns/FAQ/Faq.jsx'
 import Contact from './componetns/Contact/Contact.jsx'
 import OrderConfirm from './componetns/Cart/OrderConfirm.jsx'
+import SearchResults from './componetns/Search/Search.jsx'
+import { CollectionProvider } from './componetns/Context/CollectionContext';
 
 import { ThemeProvider, ThemeContext } from './componetns/Context/ThemeContext.jsx'
 
@@ -37,6 +39,8 @@ const router = createBrowserRouter(
       <Route path="cart" element={<Cart />} />
       <Route path="knowme" element={<Knowme />} />
       <Route path="/order-confirmation" element={<OrderConfirm />} />
+      {/* <Route path="/search" element={<SearchResults collectionItems={collectionItems} />} /> */}
+      <Route path="/search" element={<SearchResults />} />
 
     </Route>
 
@@ -48,8 +52,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider>
       <CartProvider>
+        <CollectionProvider>
 
         <RouterProvider router={router} />
+        </CollectionProvider>
       </CartProvider>
     </ThemeProvider>
 

@@ -29,14 +29,14 @@ function Men() {
 
   const products = [
     
-    { name: 'Formal Wear', price: 599, discount: 10, imgSrc: '/assets/Images/M1.jpg', rating: 4 },
-    { name: 'Original', price: 699, discount: 15, imgSrc: '/assets/Images/M2.jpg', rating: 5 },
-    { name: 'Sport', price: 499, discount: 20, imgSrc: '/assets/Images/M3.jpg', rating: 3 },
-    { name: 'Nike', price: 899, discount: 25, imgSrc: '/assets/Images/M4.jpg', rating: 5 },
-    { name: 'T-shirt', price: 799, discount: 10, imgSrc: '/assets/Images/M5.jpg', rating: 4 },
-    { name: 'Casual wear', price: 499, discount: 5, imgSrc: '/assets/Images/M6.jpg', rating: 3 },
-    { name: 'Fashion', price: 599, discount: 15, imgSrc: '/assets/Images/M7.jpg', rating: 4 },
-    { name: 'Formal Shirt', price: 699, discount: 10, imgSrc: '/assets/Images/M8.jpg', rating: 5 },
+    { name: 'Men 1', price: 599, discount: 10, imgSrc: '/assets/Images/M1.jpg', rating: 4 },
+    { name: 'Men 2', price: 699, discount: 15, imgSrc: '/assets/Images/M2.jpg', rating: 5 },
+    { name: 'Men 3', price: 499, discount: 20, imgSrc: '/assets/Images/M3.jpg', rating: 3 },
+    { name: 'Men 4', price: 899, discount: 25, imgSrc: '/assets/Images/M4.jpg', rating: 5 },
+    { name: 'Men 5', price: 799, discount: 10, imgSrc: '/assets/Images/M5.jpg', rating: 4 },
+    { name: 'Men 6', price: 499, discount: 5, imgSrc: '/assets/Images/M6.jpg', rating: 3 },
+    { name: 'Men 7', price: 599, discount: 15, imgSrc: '/assets/Images/M7.jpg', rating: 4 },
+    { name: 'Men 8', price: 699, discount: 10, imgSrc: '/assets/Images/M8.jpg', rating: 5 },
     { name: 'T-Shirt', price: 599, discount: 20, imgSrc: '/assets/Images/M9.jpg', rating: 4 },
     { name: 'fashion-T-Shirt', price: 599, discount: 30, imgSrc: '/assets/Images/M2.jpg', rating: 4 },
   

@@ -28,14 +28,14 @@ function Women() {
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   const products = [
-    { name: 'Formal Wear', price: 599, discount: 10, imgSrc: '/assets/Images/W2.jpg', rating: 4 },
-    { name: 'Kids Formal Wear', price: 599, discount: 15, imgSrc: '/assets/Images/K1.jpg', rating: 5 },
-    { name: 'Kids Wear', price: 799, discount: 20, imgSrc: '/assets/Images/k5.jpg', rating: 4 },
-    { name: 'Formal Wear', price: 599, discount: 10, imgSrc: '/assets/Images/K2.jpg', rating: 4 },
-    { name: 'Kids Wear', price: 999, discount: 25, imgSrc: '/assets/Images/k4.jpg', rating: 5 },
-    { name: 'For Kids', price: 399, discount: 5, imgSrc: '/assets/Images/K3.jpg', rating: 3 },
-    { name: 'Kids Wear', price: 499, discount: 15, imgSrc: '/assets/Images/k6.jpg', rating: 4 },
-    { name: 'Kids Wear', price: 599, discount: 10, imgSrc: '/assets/Images/K1.jpg', rating: 4 },
+    
+    { name: 'Kids 1', price: 599, discount: 15, imgSrc: '/assets/Images/K1.jpg', rating: 5 },
+    { name: 'Kids 2', price: 799, discount: 20, imgSrc: '/assets/Images/k5.jpg', rating: 4 },
+    { name: 'Kids 3', price: 599, discount: 10, imgSrc: '/assets/Images/K2.jpg', rating: 4 },
+    { name: 'Kids 4', price: 999, discount: 25, imgSrc: '/assets/Images/k4.jpg', rating: 5 },
+    { name: 'Kids 5', price: 399, discount: 5, imgSrc: '/assets/Images/K3.jpg', rating: 3 },
+    { name: 'Kids 6', price: 499, discount: 15, imgSrc: '/assets/Images/k6.jpg', rating: 4 },
+    { name: 'Kids 7', price: 599, discount: 10, imgSrc: '/assets/Images/K1.jpg', rating: 4 },
   ];
 
   const handleAddToCart = (product) => {
