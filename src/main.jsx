@@ -18,6 +18,7 @@ import { ThemeProvider, ThemeContext } from './componetns/Context/ThemeContext.j
 import Men from './componetns/Collections/Men.jsx'
 import Women from './componetns/Collections/Women.jsx'
 import Kids from './componetns/Collections/Kids.jsx'
+import Hl from './componetns/Collections/Hl.jsx'
 import Cart from './componetns/Cart/Cart.jsx'
 import Knowme from './componetns/Knowme/Knowme.jsx'
 import { CartContext, CartProvider } from './componetns/Context/CartContext.jsx'
@@ -36,6 +37,7 @@ const router = createBrowserRouter(
       <Route path="men" element={<Men />} />
       <Route path="women" element={<Women />} />
       <Route path="kids" element={<Kids />} />
+      <Route path="hl" element={<Hl />} />
       <Route path="cart" element={<Cart />} />
       <Route path="knowme" element={<Knowme />} />
       <Route path="/order-confirmation" element={<OrderConfirm />} />

@@ -129,6 +129,9 @@ export default function Header() {
                         <li>
                           <NavLink to="/kids" className="block px-4 py-2 hover:bg-purple-600 text-gray-900" onClick={closeMobileMenu}>Kids</NavLink>
                         </li>
+                        <li>
+                          <NavLink to="/hl" className="block px-4 py-2 hover:bg-purple-600 text-gray-900" onClick={closeMobileMenu}>Home & Living</NavLink>
+                        </li>
                       </ul>
                     </div>
                   )}
@@ -182,6 +185,7 @@ export default function Header() {
                   <li><NavLink to="/men" className="block text-white" onClick={closeMobileMenu}>Men</NavLink></li>
                   <li><NavLink to="/women" className="block text-white" onClick={closeMobileMenu}>Women</NavLink></li>
                   <li><NavLink to="/kids" className="block text-white" onClick={closeMobileMenu}>Kids</NavLink></li>
+                  <li><NavLink to="/hl" className="block text-white" onClick={closeMobileMenu}>Home & Living</NavLink></li>
                 </ul>
               )}
             </li>

@@ -28,6 +28,10 @@ export function CollectionProvider({ children }) {
     { name: 'Cocktail Dress', price: 799, discount: 10, imgSrc: '/assets/Images/W6.jpg', rating: 4 },
     { name: 'Party Wear', price: 499, discount: 5, imgSrc: '/assets/Images/W7.jpg', rating: 3 },
     { name: 'Formal Dress', price: 599, discount: 15, imgSrc: '/assets/Images/W8.jpg', rating: 4 },
+    { name: 'Watch 1', price: 599, discount: 10, imgSrc: '/assets/Images/Watch1 (1).jpg', rating: 4 },
+    { name: 'Watch 2', price: 699, discount: 15, imgSrc: '/assets/Images/Watch1 (2).jpg', rating: 5 },
+    { name: 'Watch 3', price: 499, discount: 20, imgSrc: '/assets/Images/Watch1 (3).jpg', rating: 3 },
+    { name: 'Watch 4', price: 899, discount: 25, imgSrc: '/assets/Images/Watch1 (4).jpg', rating: 5 },
   ];
 
   return (
