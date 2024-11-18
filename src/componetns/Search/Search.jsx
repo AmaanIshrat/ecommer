@@ -1,7 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
-import { useCollection } from '../Context/CollectionContext'; 
+import { useCollection } from '../Context/CollectionContext';
 import { CartContext } from '../Context/CartContext';
+import { ThemeContext } from '../Context/ThemeContext';
+
+const calculateDiscountedPrice = (originalPrice, discountPercentage) => {
+  if (!discountPercentage) return originalPrice; // If no discount, return the original price
+  return Math.round(originalPrice - (originalPrice * discountPercentage) / 100);
+};
 
 const SearchResults = () => {
   const location = useLocation();
@@ -9,6 +15,7 @@ const SearchResults = () => {
   const [filteredItems, setFilteredItems] = useState([]);
   const [successMessage, setSuccessMessage] = useState('');
   const { addToCart } = useContext(CartContext);
+  const { theme } = useContext(ThemeContext);
 
   const handleAddToCart = (item) => {
     addToCart(item);
@@ -30,53 +37,68 @@ const SearchResults = () => {
 
   return (
     <div className="search-results p-6">
-      {/* Display success message if it's set */}
       {successMessage && (
         <div className="fixed top-16 right-4 px-4 py-2 rounded-md shadow-md z-50 bg-green-500 text-white font-semibold text-sm">
           {successMessage}
         </div>
       )}
 
-      <h1 className="text-2xl font-semibold mb-6 text-center text-purple-600">Search Results</h1>
-      
-      {filteredItems.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"> {/* Increased gap between items */}
-          {filteredItems.map((item) => (
-            <div key={item.id} className="item bg-white p-3 rounded-lg shadow-lg hover:shadow-xl transition-shadow transform hover:scale-105"> {/* Reduced padding */}
-              <img
-                src={item.imgSrc}
-                alt={item.name}
-                className="item-image w-full h-56 object-cover rounded-t-lg mb-3"  
-              />
-              <div className="item-details text-center">
-                <p className="item-name text-base font-semibold truncate text-gray-700">{item.name}</p> {/* Reduced font size */}
-                
-                {/* Display discount price if available */}
-                {item.discountPrice ? (
-                  <div className="item-price text-lg font-bold text-purple-600 mt-2"> {/* Reduced font size */}
-                    Rs-{item.discountPrice}
-                    <span className="text-sm line-through text-gray-500 ml-2">Rs-{item.price}</span>
-                  </div>
-                ) : (
-                  <p className="item-price text-lg font-bold text-purple-600 mt-2">Rs-{item.price}</p>
-                )}
+      <h1 className="text-3xl font-bold mb-8 text-center text-purple-700">Search Results</h1>
 
-                {/* Display rating */}
-                <div className="item-rating mt-2 text-yellow-500">
-                  {'★'.repeat(Math.floor(item.rating))}{'☆'.repeat(5 - Math.floor(item.rating))}
+      {filteredItems.length > 0 ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {filteredItems.map((item, index) => {
+            const discountedPrice = item.discountPrice || calculateDiscountedPrice(item.price, item.discount || 0);
+            return (
+              <div
+                key={index}
+                className={`max-w-sm shadow-md rounded-lg mx-auto transition-transform transform hover:scale-105 ${theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-white text-gray-800'
+                  }`}
+              >
+                <div className="relative w-full h-64 overflow-hidden rounded-t-lg">
+                  <img
+                    className="absolute inset-0 w-full h-full object-cover cursor-pointer"
+                    src={item.imgSrc}
+                    alt={item.name}
+                    onClick={() => handleImageClick(item)}
+                  />
                 </div>
 
-                <button 
-                  onClick={() => handleAddToCart(item)} 
-                  className="add-to-cart-btn bg-purple-500 text-white py-2 px-5 rounded-full mt-4 w-full transition-all hover:bg-purple-600 hover:scale-105">
-                  Add to Cart
-                </button>
+                <div className="p-4">
+                  <h3 className="text-lg font-semibold">{item.name}</h3>
+                  <div className="mt-2">
+                    <p className="text-gray-500">
+                      <span className="line-through">Rs-{item.price}</span>
+                    </p>
+                    <p className="text-lg font-bold text-purple-600">
+                      Rs-{discountedPrice}
+                    </p>
+                  </div>
+                  <div className="flex items-center justify-center mt-2">
+                    <span className="text-yellow-500">
+                      {'★'.repeat(Math.floor(item.rating))}
+                    </span>
+                    <span className="text-gray-300">
+                      {'☆'.repeat(5 - Math.floor(item.rating))}
+                    </span>
+                  </div>
+                  <button
+                    onClick={() => handleAddToCart(item)}
+                    className={`mt-4 w-full px-4 py-2 rounded-lg font-medium focus:outline-none transition-colors ${theme === 'dark'
+                        ? 'bg-gray-700 hover:bg-gray-600'
+                        : 'bg-gradient-to-r from-purple-500 to-pink-400 hover:bg-purple-700 text-white'
+                      }`}
+                  >
+                    Add to Cart
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
+
+            );
+          })}
         </div>
       ) : (
-        <p className="text-center text-xl text-gray-600">No results found</p>
+        <p className="text-center text-2xl text-gray-600">No results found</p>
       )}
     </div>
   );
